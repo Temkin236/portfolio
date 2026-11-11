@@ -123,3 +123,37 @@ body {
 .animate-pulse-subtle {
   animation: subtlePulse 4s ease-in-out infinite;
 }
+
+/* Inspo Aesthetic Utilities */
+.bg-dot-pattern {
+  background-image: radial-gradient(rgba(138, 117, 179, 0.22) 1.5px, transparent 1.5px);
+  background-size: 18px 18px;
+}
+
+.card-inspo-lilac {
+  background: #F4EFFB;
+  border: 1px solid rgba(216, 205, 238, 0.6);
+  border-radius: 1.5rem;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-inspo-lilac:hover {
+  background: #F8F4FD;
+  border-color: rgba(138, 117, 179, 0.4);
+  box-shadow: 0 16px 36px -10px rgba(138, 117, 179, 0.18);
+  transform: translateY(-4px);
+}
+
+.squircle-tile {
+  background: #FFFFFF;
+  border: 1px solid rgba(216, 205, 238, 0.6);
+  border-radius: 1.25rem;
+  box-shadow: 0 4px 16px -4px rgba(138, 117, 179, 0.08);
+  transition: all 0.3s ease;
+}
+
+.squircle-tile:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px -6px rgba(138, 117, 179, 0.18);
+  border-color: #8A75B3;
+}

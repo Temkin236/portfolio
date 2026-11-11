@@ -15,7 +15,39 @@ export const Footer: React.FC<FooterProps> = ({ onOpenTerminal, onOpenCoffee }) 
   };
 
   return (
-    <footer className="border-t border-[#D8CDEE]/60 bg-white/70 backdrop-blur-md py-12 px-4 sm:px-6 lg:px-8 mt-12">
+    <footer className="mt-20">
+      {/* Inspo Bottom Purple Banner Strip */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
+        <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-[#8A75B3] via-[#7863A2] to-[#6C529E] text-white p-8 sm:p-12 shadow-xl flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="space-y-2 text-center md:text-left z-10">
+            <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#D8CDEE]">
+              READY TO BUILD?
+            </span>
+            <h3 className="text-2xl sm:text-4xl font-extrabold uppercase tracking-tight font-sans">
+              LET&apos;S CREATE SOMETHING EXTRAORDINARY
+            </h3>
+            <p className="text-xs sm:text-sm text-white/80 max-w-lg">
+              Available for ambitious AI engineering roles, intelligent agent architectures, and full-stack software products.
+            </p>
+          </div>
+
+          <div className="z-10 flex flex-wrap items-center gap-3">
+            <Link
+              href="/contact"
+              className="px-7 py-3.5 rounded-full bg-white text-[#1E1B24] text-xs sm:text-sm font-bold uppercase tracking-wider hover:bg-[#F5F2FA] transition-all shadow-md inline-flex items-center gap-2 group cursor-pointer"
+            >
+              <span>Let&apos;s Connect</span>
+              <span className="group-hover:translate-x-1 transition-transform">→</span>
+            </Link>
+          </div>
+
+          {/* Background Decorative Sparkles */}
+          <div className="absolute top-4 right-10 text-white/20 text-3xl select-none">✦</div>
+          <div className="absolute -bottom-10 -right-10 w-48 h-48 bg-white/10 rounded-full blur-2xl pointer-events-none" />
+        </div>
+      </div>
+
+      <div className="border-t border-[#D8CDEE]/60 bg-white/70 backdrop-blur-md py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
         {/* Brand & Editorial Byline */}
         <div className="space-y-1 text-center md:text-left">
@@ -74,6 +106,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenTerminal, onOpenCoffee }) 
         <p className="flex items-center gap-1">
           Designed with 💜 luxury editorial aesthetics, Next.js, and Agentic AI.
         </p>
+      </div>
       </div>
     </footer>
   );

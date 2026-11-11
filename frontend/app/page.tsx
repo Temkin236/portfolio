@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { Navbar } from "@/components/navigation/Navbar";
 import { HeroSection } from "@/components/hero/HeroSection";
+import { ExpertiseAndProcess } from "@/components/expertise/ExpertiseAndProcess";
 import { GetToKnowTemkin } from "@/components/discovery/GetToKnowTemkin";
 import { ProjectUniverse } from "@/components/projects/ProjectUniverse";
 import { TechConstellation } from "@/components/constellation/TechConstellation";
@@ -52,6 +53,9 @@ export default function Home() {
         onOpenCheers={() => setCheersModalOpen(true)}
         onOpenAiChat={() => setAiChatOpen(true)}
       />
+
+      {/* Inspo Aesthetic Sections: My Expertise + Tools & Technologies + My Process */}
+      <ExpertiseAndProcess />
 
       {/* Signature Personality Discovery: Get to Know Temkin */}
       <GetToKnowTemkin />

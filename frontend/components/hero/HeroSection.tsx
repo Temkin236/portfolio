@@ -2,6 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { 
   ArrowRight, 
@@ -11,7 +12,11 @@ import {
   Sparkles, 
   Trophy,
   Cpu,
-  GraduationCap
+  GraduationCap,
+  Briefcase,
+  Layers,
+  CheckCircle2,
+  ExternalLink
 } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "@/components/ui/Icons";
 
@@ -27,201 +32,230 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   onOpenAiChat,
 }) => {
   return (
-    <section className="relative min-h-[92vh] flex items-center justify-center pt-24 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
-      {/* Background Organic Floating Meshes */}
-      <div className="floating-mesh w-96 h-96 bg-[#D8CDEE] -top-20 -left-20" />
-      <div className="floating-mesh w-80 h-80 bg-[#8A75B3]/25 top-1/3 -right-20" />
-      <div className="floating-mesh w-72 h-72 bg-[#F2DFE6] -bottom-10 left-1/3" />
+    <section className="relative pt-28 pb-12 sm:pt-36 sm:pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden bg-[#F5F2FA]">
+      {/* Background Ambient Meshes & Sparkles */}
+      <div className="floating-mesh w-96 h-96 bg-[#D8CDEE]/60 -top-20 -left-20" />
+      <div className="floating-mesh w-80 h-80 bg-[#8A75B3]/20 top-1/3 -right-20" />
+      <div className="floating-mesh w-72 h-72 bg-[#EDE5E9] -bottom-10 left-1/3" />
 
-      <div className="relative z-10 max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-        {/* Left Column: Editorial Headline & Copy */}
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="lg:col-span-7 flex flex-col items-start space-y-6 text-left"
-        >
-          {/* Live Status Pill */}
-          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full glass-pill shadow-xs">
-            <span className="relative flex h-2.5 w-2.5">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
-            </span>
-            <span className="text-xs font-medium text-[#1E1B24]/90">
-              Exploring Agentic AI & RAG Architectures at ASTU
-            </span>
-          </div>
+      {/* Floating Sparkle Elements */}
+      <div className="absolute top-36 left-12 text-[#8A75B3]/40 text-xl select-none animate-pulse">✦</div>
+      <div className="absolute top-48 right-1/4 text-[#8A75B3]/50 text-2xl select-none animate-bounce" style={{ animationDuration: '6s' }}>✦</div>
+      <div className="absolute bottom-32 left-1/4 text-[#8A75B3]/30 text-lg select-none">✦</div>
 
-          {/* Main Editorial Headline */}
-          <div className="space-y-3">
-            <motion.div
-              initial={{ opacity: 0, x: -16 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.15, duration: 0.7 }}
-              className="editorial-tag text-[#8A75B3] font-semibold flex items-center gap-2"
-            >
-              <span>TEMKIN ABDULMELIK</span>
-              <span className="w-8 h-[1px] bg-[#8A75B3]/40"></span>
-              <span className="flex items-center gap-1 text-[11px] font-medium text-[#5E5868]">
-                <MapPin className="w-3 h-3 text-[#8A75B3]" /> Adama, Ethiopia
+      <div className="relative z-10 max-w-7xl mx-auto w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center mb-16 sm:mb-24">
+          {/* Left Column: Bold Two-Tone Typography & CTA */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-7 flex flex-col items-start space-y-6 text-left"
+          >
+            {/* Inspo Small Uppercase Tag */}
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full glass-pill border border-[#D8CDEE]/70 shadow-xs">
+              <span className="text-[11px] sm:text-xs font-bold uppercase tracking-[0.2em] text-[#8A75B3]">
+                HELLO, I&apos;M TEMKIN ✨
               </span>
-            </motion.div>
+            </div>
 
-            <h1 className="font-editorial-serif text-5xl sm:text-6xl lg:text-7xl font-normal tracking-tight text-[#1E1B24] leading-[1.1]">
-              Hey, I&apos;m <span className="italic font-normal text-[#8A75B3]">Temkin</span>. ✨
-            </h1>
+            {/* Massive Two-Tone Display Headline (Matching Inspo) */}
+            <div className="space-y-1">
+              <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-[#8A75B3] uppercase leading-none font-sans">
+                AI & FULL-STACK
+              </h1>
+              <h2 className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight text-[#1E1B24] uppercase leading-none font-sans">
+                DEVELOPER
+              </h2>
+            </div>
 
-            <p className="font-editorial-cormorant text-2xl sm:text-3xl text-[#5E5868] font-light leading-snug">
-              Building things that make intelligence feel magical.
+            {/* Inspo Subtitle */}
+            <p className="text-base sm:text-xl text-[#5E5868] max-w-xl font-normal leading-relaxed">
+              I design and engineer intelligent, functional, and user-friendly digital experiences at the intersection of agentic systems and modern software.
             </p>
-          </div>
 
-          {/* Supporting Bio */}
-          <p className="text-base sm:text-lg text-[#1E1B24]/80 max-w-xl font-normal leading-relaxed">
-            Engineer by education, builder by curiosity, AI enthusiast by obsession. Usually somewhere between an ambitious idea and another cup of coffee.
-          </p>
+            {/* Action Buttons (Matching Inspo) */}
+            <div className="flex flex-wrap items-center gap-3.5 pt-2">
+              <a
+                href="#projects"
+                className="px-7 py-3.5 rounded-full bg-[#8A75B3] hover:bg-[#7863A2] text-white text-xs sm:text-sm font-semibold uppercase tracking-wider transition-all duration-300 shadow-md hover:shadow-lg inline-flex items-center gap-2 group cursor-pointer"
+              >
+                <span>View Portfolio</span>
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </a>
 
-          {/* Quick Credential Badges */}
-          <div className="flex flex-wrap gap-2.5 pt-1">
-            <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/80 border border-[#D8CDEE]/70 text-xs font-medium text-[#1E1B24]">
-              <GraduationCap className="w-3.5 h-3.5 text-[#8A75B3]" />
-              <span>ASTU ECE &apos;27</span>
+              <a
+                href="/documents/Temkin_Abdulmelik_CV.pdf"
+                target="_blank"
+                download
+                className="px-6 py-3.5 rounded-full bg-white border border-[#D8CDEE] text-[#1E1B24] text-xs sm:text-sm font-semibold uppercase tracking-wider hover:border-[#8A75B3] hover:bg-[#F5F2FA] transition-all shadow-xs inline-flex items-center gap-2"
+              >
+                <span>Download CV</span>
+                <Download className="w-4 h-4 text-[#8A75B3]" />
+              </a>
+
+              <button
+                onClick={onOpenAiChat}
+                className="px-5 py-3.5 rounded-full bg-[#D8CDEE]/60 border border-[#8A75B3]/30 text-[#1E1B24] text-xs sm:text-sm font-semibold uppercase tracking-wider hover:bg-[#D8CDEE] transition-all inline-flex items-center gap-1.5 cursor-pointer"
+              >
+                <Sparkles className="w-4 h-4 text-[#8A75B3]" />
+                <span>Ask AI</span>
+              </button>
             </div>
-            <button
-              onClick={onOpenCheers}
-              className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50/90 border border-amber-200/80 text-xs font-medium text-amber-900 hover:bg-amber-100 transition-colors cursor-pointer"
-            >
-              <Trophy className="w-3.5 h-3.5 text-amber-600" />
-              <span>1st Place CSEC ASTU Hackathon</span>
-            </button>
-            <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/80 border border-[#D8CDEE]/70 text-xs font-medium text-[#1E1B24]">
-              <Cpu className="w-3.5 h-3.5 text-[#8A75B3]" />
-              <span>Agentic AI & LangGraph</span>
+
+            {/* Social Links & Location Bar */}
+            <div className="flex items-center gap-5 pt-3 text-xs sm:text-sm text-[#5E5868]">
+              <a
+                href="https://github.com/Temkin236"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1.5 hover:text-[#8A75B3] transition-colors"
+              >
+                <GithubIcon className="w-4 h-4" />
+                <span>GitHub</span>
+              </a>
+              <span className="text-gray-300">•</span>
+              <a
+                href="https://linkedin.com/in/temkin-abdulmelik-195582306"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1.5 hover:text-[#8A75B3] transition-colors"
+              >
+                <LinkedinIcon className="w-4 h-4" />
+                <span>LinkedIn</span>
+              </a>
+              <span className="text-gray-300">•</span>
+              <a
+                href="mailto:temkinabdulmelik@gmail.com"
+                className="flex items-center gap-1.5 hover:text-[#8A75B3] transition-colors"
+              >
+                <Mail className="w-4 h-4" />
+                <span>Email</span>
+              </a>
             </div>
-          </div>
+          </motion.div>
 
-          {/* Primary Action Buttons */}
-          <div className="flex flex-wrap items-center gap-3 pt-2">
-            <a
-              href="#projects"
-              className="px-6 py-3 rounded-full bg-[#1E1B24] text-white text-sm font-medium hover:bg-[#8A75B3] transition-all duration-300 shadow-md hover:shadow-lg inline-flex items-center gap-2 group"
-            >
-              <span>Explore My Projects</span>
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </a>
+          {/* Right Column: Inspo Circular Backdrop & Portrait with Badge */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.94 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-5 flex justify-center relative"
+          >
+            <div className="relative w-80 sm:w-96 aspect-[4/5] max-w-md flex items-center justify-center">
+              {/* Inspo Large Circular Pastel Backdrop with Dotted Pattern Accent */}
+              <div className="absolute w-72 h-72 sm:w-88 sm:h-88 rounded-full bg-gradient-to-tr from-[#D8CDEE] via-[#EDE5E9] to-[#FAF8FD] -z-10 shadow-lg" />
+              
+              {/* Dotted Grid Decorative Element (Matching Inspo) */}
+              <div className="absolute -top-4 -right-4 w-28 h-28 bg-dot-pattern rounded-2xl opacity-75 -z-5" />
 
-            <a
-              href="#contact"
-              className="px-6 py-3 rounded-full bg-white border border-[#D8CDEE] text-[#1E1B24] text-sm font-medium hover:border-[#8A75B3] hover:bg-[#F5F2FA] transition-all shadow-xs"
-            >
-              Let&apos;s Collaborate
-            </a>
+              {/* Portrait Container */}
+              <div className="relative w-full h-full organic-portrait-frame overflow-hidden border-4 border-white bg-white/70 shadow-2xl">
+                <Image
+                  src="/images/temkin-portrait.jpg"
+                  alt="Temkin Abdulmelik — Portrait"
+                  fill
+                  priority
+                  className="object-cover object-top hover:scale-105 transition-transform duration-700"
+                  sizes="(max-width: 768px) 100vw, 420px"
+                />
+              </div>
 
-            <button
-              onClick={onOpenAiChat}
-              className="px-5 py-3 rounded-full bg-[#D8CDEE]/60 border border-[#8A75B3]/30 text-[#1E1B24] text-sm font-medium hover:bg-[#D8CDEE] transition-all inline-flex items-center gap-1.5"
-            >
-              <Sparkles className="w-4 h-4 text-[#8A75B3]" />
-              <span>Ask AI About Me</span>
-            </button>
-          </div>
+              {/* Inspo "Based in ADAMA, ETHIOPIA 📍" Floating Badge */}
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.5, duration: 0.6 }}
+                className="absolute bottom-6 -right-4 sm:-right-8 bg-white/95 backdrop-blur-md border border-[#D8CDEE] py-2.5 px-4 rounded-2xl shadow-xl flex items-center gap-2.5 z-20"
+              >
+                <div className="w-8 h-8 rounded-full bg-[#D8CDEE]/60 flex items-center justify-center text-[#8A75B3]">
+                  <MapPin className="w-4 h-4" />
+                </div>
+                <div className="text-left">
+                  <p className="font-serif italic text-xs text-[#8A75B3] leading-none">
+                    Based in
+                  </p>
+                  <p className="text-xs font-bold uppercase tracking-wider text-[#1E1B24] leading-tight mt-0.5">
+                    Adama, Ethiopia
+                  </p>
+                </div>
+              </motion.div>
 
-          {/* Social Profiles & Resume Link */}
-          <div className="flex items-center gap-5 pt-3 text-sm text-[#5E5868]">
-            <a
-              href="https://github.com/Temkin236"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1.5 hover:text-[#8A75B3] transition-colors"
-            >
-              <GithubIcon className="w-4 h-4" />
-              <span>GitHub</span>
-            </a>
-            <span className="text-gray-300">•</span>
-            <a
-              href="https://linkedin.com/in/temkin-abdulmelik-195582306"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1.5 hover:text-[#8A75B3] transition-colors"
-            >
-              <LinkedinIcon className="w-4 h-4" />
-              <span>LinkedIn</span>
-            </a>
-            <span className="text-gray-300">•</span>
-            <a
-              href="mailto:temkinabdulmelik@gmail.com"
-              className="flex items-center gap-1.5 hover:text-[#8A75B3] transition-colors"
-            >
-              <Mail className="w-4 h-4" />
-              <span>Email</span>
-            </a>
-            <span className="text-gray-300">•</span>
-            <a
-              href="/api/resume/download"
-              target="_blank"
-              download
-              className="flex items-center gap-1.5 text-[#8A75B3] font-medium hover:underline"
-            >
-              <Download className="w-4 h-4" />
-              <span>Download CV</span>
-            </a>
-          </div>
-        </motion.div>
+              {/* Floating Pill: Hackathon 1st Place */}
+              <motion.button
+                onClick={onOpenCheers}
+                whileHover={{ scale: 1.05 }}
+                className="absolute -top-3 -left-4 sm:-left-6 bg-white/95 backdrop-blur-md border border-amber-200/90 py-2 px-3.5 rounded-2xl shadow-lg flex items-center gap-2 cursor-pointer z-20"
+              >
+                <span className="text-lg">🏆</span>
+                <div className="text-left">
+                  <p className="text-[10px] font-bold uppercase tracking-wider text-amber-700">
+                    1st Place Winner
+                  </p>
+                  <p className="text-[11px] font-medium text-[#1E1B24]">CSEC Hackathon v1.0</p>
+                </div>
+              </motion.button>
+            </div>
+          </motion.div>
+        </div>
 
-        {/* Right Column: Organic Framed Portrait */}
+        {/* 4-Stat Metric Banner Strip (Matching Inspo) */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.92 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          className="lg:col-span-5 flex justify-center lg:justify-end relative"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4, duration: 0.7 }}
+          className="w-full bg-white rounded-3xl border border-[#D8CDEE]/70 shadow-lg p-6 sm:p-8 grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 items-center divide-y md:divide-y-0 md:divide-x divide-[#D8CDEE]/50"
         >
-          <div className="relative w-72 sm:w-84 md:w-96 aspect-[4/5] max-w-sm">
-            {/* Subtle decorative glow ring */}
-            <div className="absolute -inset-4 bg-gradient-to-tr from-[#8A75B3]/25 via-[#D8CDEE]/50 to-white/40 rounded-full blur-2xl -z-10 animate-pulse-subtle" />
-
-            {/* Organic framed authentic portrait */}
-            <div className="relative w-full h-full organic-portrait-frame overflow-hidden border-4 border-white bg-white/60">
-              <Image
-                src="/images/temkin-portrait.jpg"
-                alt="Temkin Abdulmelik — Portrait"
-                fill
-                priority
-                className="object-cover object-top hover:scale-105 transition-transform duration-700"
-                sizes="(max-width: 768px) 100vw, 400px"
-              />
+          {/* Stat 1 */}
+          <div className="flex flex-col items-center text-center space-y-1.5 pt-4 md:pt-0">
+            <div className="w-10 h-10 rounded-full bg-[#D8CDEE]/60 flex items-center justify-center text-[#8A75B3] mb-1">
+              <Trophy className="w-5 h-5" />
             </div>
+            <span className="text-2xl sm:text-3xl font-extrabold text-[#1E1B24] font-sans">
+              1st Place
+            </span>
+            <span className="text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-[#5E5868]">
+              CSEC ASTU Hackathon
+            </span>
+          </div>
 
-            {/* Floating Floating Pill: Coffee Companion */}
-            <motion.div
-              animate={{ y: [0, -6, 0] }}
-              transition={{ repeat: Infinity, duration: 4.5, ease: "easeInOut" }}
-              onClick={onOpenCoffee}
-              className="absolute -bottom-3 -left-4 bg-white/95 backdrop-blur-md border border-[#D8CDEE] py-2 px-3.5 rounded-2xl shadow-lg flex items-center gap-2 cursor-pointer hover:border-[#8A75B3] transition-all"
-            >
-              <span className="text-xl">☕</span>
-              <div className="text-left">
-                <p className="text-[10px] font-semibold uppercase tracking-wider text-[#8A75B3]">
-                  Coffee Corner
-                </p>
-                <p className="text-xs font-medium text-[#1E1B24]">Brew a cup with me</p>
-              </div>
-            </motion.div>
+          {/* Stat 2 */}
+          <div className="flex flex-col items-center text-center space-y-1.5 pt-4 md:pt-0 md:pl-4">
+            <div className="w-10 h-10 rounded-full bg-[#D8CDEE]/60 flex items-center justify-center text-[#8A75B3] mb-1">
+              <Briefcase className="w-5 h-5" />
+            </div>
+            <span className="text-2xl sm:text-3xl font-extrabold text-[#1E1B24] font-sans">
+              8+ Projects
+            </span>
+            <span className="text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-[#5E5868]">
+              Engineered & Deployed
+            </span>
+          </div>
 
-            {/* Floating Pill: Hackathon Winner */}
-            <motion.div
-              animate={{ y: [0, 6, 0] }}
-              transition={{ repeat: Infinity, duration: 5, ease: "easeInOut", delay: 1 }}
-              onClick={onOpenCheers}
-              className="absolute -top-3 -right-3 bg-white/95 backdrop-blur-md border border-amber-200 py-2 px-3.5 rounded-2xl shadow-lg flex items-center gap-2 cursor-pointer hover:bg-amber-50/80 transition-all"
-            >
-              <span className="text-xl">🏆</span>
-              <div className="text-left">
-                <p className="text-[10px] font-semibold uppercase tracking-wider text-amber-700">
-                  Meri AI
-                </p>
-                <p className="text-xs font-medium text-[#1E1B24]">CSEC Hackathon #1</p>
-              </div>
-            </motion.div>
+          {/* Stat 3 */}
+          <div className="flex flex-col items-center text-center space-y-1.5 pt-4 md:pt-0 md:pl-4">
+            <div className="w-10 h-10 rounded-full bg-[#D8CDEE]/60 flex items-center justify-center text-[#8A75B3] mb-1">
+              <CheckCircle2 className="w-5 h-5" />
+            </div>
+            <span className="text-2xl sm:text-3xl font-extrabold text-[#1E1B24] font-sans">
+              100% Tests
+            </span>
+            <span className="text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-[#5E5868]">
+              Deterministic Passing Rate
+            </span>
+          </div>
+
+          {/* Stat 4 */}
+          <div className="flex flex-col items-center text-center space-y-1.5 pt-4 md:pt-0 md:pl-4">
+            <div className="w-10 h-10 rounded-full bg-[#D8CDEE]/60 flex items-center justify-center text-[#8A75B3] mb-1">
+              <GraduationCap className="w-5 h-5" />
+            </div>
+            <span className="text-2xl sm:text-3xl font-extrabold text-[#1E1B24] font-sans">
+              2027 ECE
+            </span>
+            <span className="text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-[#5E5868]">
+              ASTU Engineering Degree
+            </span>
           </div>
         </motion.div>
       </div>

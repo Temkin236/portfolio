@@ -52,17 +52,17 @@ export const Navbar: React.FC<NavbarProps> = ({
         {/* Brand Monogram */}
         <Link
           href="/"
-          className="group flex items-center gap-2 text-decoration-none"
+          className="group flex items-center gap-2.5 text-decoration-none"
         >
-          <span className="w-9 h-9 rounded-full bg-gradient-to-tr from-[#8A75B3] to-[#D8CDEE] flex items-center justify-center text-white font-serif font-bold text-lg shadow-sm group-hover:scale-105 transition-transform">
-            T
+          <span className="font-serif font-bold text-2xl tracking-tight text-[#1E1B24] group-hover:text-[#8A75B3] transition-colors">
+            TA<span className="text-[#8A75B3]">.</span>
           </span>
-          <div className="flex flex-col">
-            <span className="font-serif font-medium text-lg tracking-tight text-[#1E1B24] group-hover:text-[#8A75B3] transition-colors">
-              Temkin&apos;s World
+          <div className="hidden sm:flex flex-col">
+            <span className="text-xs font-semibold tracking-wide uppercase text-[#1E1B24]">
+              Temkin Abdulmelik
             </span>
-            <span className="text-[10px] tracking-widest uppercase font-semibold text-[#8A75B3]">
-              Digital Universe
+            <span className="text-[10px] tracking-widest uppercase font-medium text-[#8A75B3]">
+              AI & Full-Stack
             </span>
           </div>
         </Link>
@@ -73,7 +73,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             <Link
               key={link.name}
               href={link.href}
-              className="text-sm font-medium text-[#1E1B24]/80 hover:text-[#8A75B3] transition-colors"
+              className="text-xs font-semibold uppercase tracking-wider text-[#1E1B24]/80 hover:text-[#8A75B3] transition-colors"
             >
               {link.name}
             </Link>
@@ -86,7 +86,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           <button
             onClick={onOpenCoffee}
             title="Have a cup of coffee with Temkin"
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/90 border border-[#D8CDEE] text-[#1E1B24] text-xs font-medium hover:border-[#8A75B3] hover:bg-[#F5F2FA] transition-all shadow-xs"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/90 border border-[#D8CDEE] text-[#1E1B24] text-xs font-medium hover:border-[#8A75B3] hover:bg-[#F5F2FA] transition-all shadow-xs cursor-pointer"
           >
             <Coffee className="w-3.5 h-3.5 text-[#8A75B3]" />
             <span>Coffee</span>
@@ -97,34 +97,33 @@ export const Navbar: React.FC<NavbarProps> = ({
             )}
           </button>
 
-          {/* Cheers Celebration Button */}
+          {/* AI Companion CTA */}
           <button
-            onClick={onOpenCheers}
-            title="Cheers to building something amazing!"
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/90 border border-[#D8CDEE] text-[#1E1B24] text-xs font-medium hover:border-[#8A75B3] hover:bg-[#F5F2FA] transition-all shadow-xs"
+            onClick={onOpenAiChat}
+            className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white/90 border border-[#D8CDEE] text-[#1E1B24] text-xs font-medium hover:border-[#8A75B3] hover:bg-[#F5F2FA] transition-all shadow-xs cursor-pointer"
           >
-            <Sparkles className="w-3.5 h-3.5 text-amber-500" />
-            <span>Cheers</span>
+            <Sparkles className="w-3.5 h-3.5 text-[#8A75B3]" />
+            <span>Ask AI</span>
           </button>
 
           {/* Terminal Shortcut */}
           <button
             onClick={onOpenTerminal}
             title="Open Interactive Terminal (Ctrl + K)"
-            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-full bg-white/90 border border-[#D8CDEE] text-[#1E1B24] text-xs font-medium hover:border-[#8A75B3] hover:bg-[#F5F2FA] transition-all shadow-xs"
+            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-full bg-white/90 border border-[#D8CDEE] text-[#1E1B24] text-xs font-medium hover:border-[#8A75B3] hover:bg-[#F5F2FA] transition-all shadow-xs cursor-pointer"
           >
             <Terminal className="w-3.5 h-3.5 text-[#5E5868]" />
-            <span className="text-[10px] text-[#5E5868] font-mono hidden lg:inline">⌘K</span>
+            <span className="text-[10px] text-[#5E5868] font-mono hidden xl:inline">⌘K</span>
           </button>
 
-          {/* AI Companion CTA */}
-          <button
-            onClick={onOpenAiChat}
-            className="flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-[#8A75B3] text-white text-xs font-medium hover:bg-[#7863A2] transition-all shadow-sm hover:shadow-md"
+          {/* Inspo "LET'S TALK ->" pill */}
+          <Link
+            href="/contact"
+            className="flex items-center gap-2 px-5 py-2 rounded-full bg-[#8A75B3] text-white text-xs font-semibold tracking-wider uppercase hover:bg-[#7863A2] transition-all shadow-sm hover:shadow-md cursor-pointer group"
           >
-            <MessageSquare className="w-3.5 h-3.5" />
-            <span>Ask AI</span>
-          </button>
+            <span>Let&apos;s Talk</span>
+            <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+          </Link>
         </div>
 
         {/* Mobile Menu Button */}
