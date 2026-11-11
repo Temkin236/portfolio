@@ -1,0 +1,125 @@
+@import "tailwindcss";
+
+:root {
+  --bg-primary: #F5F2FA;
+  --bg-card: #FFFFFF;
+  --tint-lilac: #D8CDEE;
+  --accent-lavender: #8A75B3;
+  --text-dark: #1E1B24;
+  --text-muted: #5E5868;
+  --border-delicate: rgba(216, 205, 238, 0.45);
+  --border-card: rgba(138, 117, 179, 0.15);
+  --shadow-soft: 0 10px 30px -10px rgba(138, 117, 179, 0.12);
+  --shadow-hover: 0 20px 40px -12px rgba(138, 117, 179, 0.22);
+}
+
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-dark);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F5F2FA;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #D8CDEE;
+  border-radius: 9999px;
+  border: 2px solid #F5F2FA;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #8A75B3;
+}
+
+/* Luxury Editorial Utility Classes */
+.font-editorial-serif {
+  font-family: var(--font-serif);
+}
+
+.font-editorial-cormorant {
+  font-family: var(--font-cormorant);
+}
+
+.editorial-tag {
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #8A75B3;
+}
+
+.glass-pill {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(216, 205, 238, 0.6);
+}
+
+.card-luxury {
+  background: #FFFFFF;
+  border: 1px solid rgba(216, 205, 238, 0.55);
+  box-shadow: 0 12px 36px -12px rgba(138, 117, 179, 0.12);
+  border-radius: 1.5rem;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-luxury:hover {
+  box-shadow: 0 22px 50px -14px rgba(138, 117, 179, 0.22);
+  border-color: rgba(138, 117, 179, 0.4);
+  transform: translateY(-4px);
+}
+
+.organic-portrait-frame {
+  border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
+  animation: organicWobble 14s ease-in-out infinite alternate;
+  box-shadow: 0 25px 60px -15px rgba(138, 117, 179, 0.28);
+}
+
+@keyframes organicWobble {
+  0% {
+    border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
+  }
+  33% {
+    border-radius: 58% 42% 38% 62% / 54% 38% 62% 46%;
+  }
+  66% {
+    border-radius: 35% 65% 60% 40% / 60% 50% 50% 40%;
+  }
+  100% {
+    border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
+  }
+}
+
+.floating-mesh {
+  position: absolute;
+  filter: blur(70px);
+  border-radius: 9999px;
+  pointer-events: none;
+  opacity: 0.65;
+  z-index: 0;
+}
+
+/* Shimmer animation */
+@keyframes subtlePulse {
+  0%, 100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+.animate-pulse-subtle {
+  animation: subtlePulse 4s ease-in-out infinite;
+}
