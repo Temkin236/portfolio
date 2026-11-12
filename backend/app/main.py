@@ -43,3 +43,35 @@ def health_check():
         "gemini_model": settings.GEMINI_MODEL,
         "ai_enabled": bool(settings.GEMINI_API_KEY)
     }
+
+@app.get("/api/healthz", tags=["system"])
+def deep_health_check():
+    from app.database import SessionLocal
+    from sqlalchemy import text
+    import time
+
+    db_status = "connected"
+    latency_ms = 0
+    try:
+        start = time.time()
+        with SessionLocal() as db:
+            db.execute(text("SELECT 1"))
+        latency_ms = round((time.time() - start) * 1000, 2)
+    except Exception as e:
+        db_status = f"unhealthy: {str(e)}"
+
+    return {
+        "status": "ok" if "unhealthy" not in db_status else "degraded",
+        "timestamp": int(time.time()),
+        "service": "Temkin's World Backend",
+        "version": "1.0.0",
+        "database": {
+            "status": db_status,
+            "ping_latency_ms": latency_ms
+        },
+        "features": {
+            "gemini_ai": bool(settings.GEMINI_API_KEY),
+            "model": settings.GEMINI_MODEL
+        }
+    }
+
