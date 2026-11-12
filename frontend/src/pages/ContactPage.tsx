@@ -8,8 +8,10 @@ import { CoffeeCorner } from "@/components/coffee/CoffeeCorner";
 import { CheersCelebration } from "@/components/celebration/CheersButton";
 import { AiCompanionModal } from "@/components/ai-companion/AiCompanionModal";
 import { EasterEggTerminal } from "@/components/terminal/EasterEggTerminal";
+import { useDocumentTitle } from "@/hooks/useDocumentTitle";
 
 export const ContactPage: React.FC = () => {
+  useDocumentTitle("Contact — Get in Touch");
   const [coffeeModalOpen, setCoffeeModalOpen] = useState(false);
   const [cheersModalOpen, setCheersModalOpen] = useState(false);
   const [aiChatOpen, setAiChatOpen] = useState(false);
