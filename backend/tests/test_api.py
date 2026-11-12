@@ -80,3 +80,48 @@ def test_admin_auth_flow():
     assert overview_resp.status_code == 200
     overview_data = overview_resp.json()
     assert overview_data["total_projects"] >= 8
+
+def test_deep_healthz():
+    response = client.get("/api/healthz")
+    assert response.status_code == 200
+    data = response.json()
+    assert data["status"] == "ok"
+    assert data["database"]["status"] == "connected"
+
+def test_security_headers():
+    response = client.get("/api/health")
+    assert response.headers.get("x-content-type-options") == "nosniff"
+    assert response.headers.get("x-frame-options") == "DENY"
+
+def test_get_technologies():
+    response = client.get("/api/technologies")
+    assert response.status_code == 200
+    techs = response.json()
+    assert len(techs) > 0
+    names = [t["name"] for t in techs]
+    assert any("React" in n for n in names)
+    assert "FastAPI" in names
+
+def test_get_timeline():
+    response = client.get("/api/timeline")
+    assert response.status_code == 200
+    events = response.json()
+    assert len(events) > 0
+    titles = [e["title"] for e in events]
+    assert any("CSEC ASTU Hackathon" in t for t in titles)
+
+def test_contact_submission():
+    payload = {
+        "name": "Jane Developer",
+        "email": "jane@example.com",
+        "subject": "AI Project Collaboration",
+        "message": "Hi Temkin, I love your portfolio and would like to collaborate on an agentic system.",
+        "inquiry_type": "Collaboration"
+    }
+    response = client.post("/api/contact", json=payload)
+    assert response.status_code == 200
+    data = response.json()
+    assert "id" in data
+    assert data["name"] == "Jane Developer"
+    assert data["email"] == "jane@example.com"
+
