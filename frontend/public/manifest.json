@@ -1,0 +1,21 @@
+{
+  "short_name": "Temkin",
+  "name": "Temkin's World — AI Portfolio",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/react.svg",
+      "type": "image/svg+xml",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#F5F2FA",
+  "theme_color": "#8A75B3",
+  "display": "standalone",
+  "orientation": "portrait"
+}
