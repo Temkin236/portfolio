@@ -115,31 +115,7 @@ export const ProjectUniverse: React.FC = () => {
       technologies: ["Next.js", "FastAPI", "LangGraph", "Voyage", "Supabase", "pgvector", "OpenStreetMap"],
       githubUrl: "https://github.com/Temkin236",
     },
-    {
-      id: "4",
-      slug: "deep-research-ai",
-      title: "Deep Research AI",
-      tagline: "Autonomous Multi-Agent Recursive Research Engine",
-      category: "ai",
-      role: "Autonomous Agent Architect",
-      coverImage: "/images/deep-research-ai.png",
-      description:
-        "An autonomous multi-agent research platform that recursively explores complex technical topics, extracts facts from multiple sources, and synthesizes structured academic dossiers.",
-      problem:
-        "Single-prompt LLMs give superficial, single-turn answers lacking depth, critical cross-verification, and iterative hypothesis testing.",
-      solution:
-        "Orchestrated a team of specialized AI agents: Planner, Web Searcher, Content Synthesizer, and Critique/Fact-Checker coordinated via LangGraph state graphs.",
-      contribution:
-        "Designed the state graph, implemented recursive query expansion, built the report markdown compiler, and created the interactive timeline visualizer.",
-      architecture:
-        "LangGraph Agent State Machine -> Tool Execution Node -> Source Cross-Verification Node -> Executive Summary Generator.",
-      challenges:
-        "Preventing infinite agent recursion loops and ensuring synthesis models do not discard contradictory minority evidence.",
-      achievements:
-        "Synthesized 10+ page verified research reports complete with executive summaries, bibliographies, and confidence ratings.",
-      technologies: ["LangGraph", "Python", "Gemini 2.5", "FastAPI", "React", "Vector DB"],
-      githubUrl: "https://github.com/Temkin236",
-    },
+
     {
       id: "5",
       slug: "aura-ai",

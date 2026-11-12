@@ -63,7 +63,7 @@ export const AboutPage: React.FC = () => {
                 <img
                   src="/images/temkin-portrait.jpg"
                   alt="Temkin Abdulmelik"
-                  className="w-full h-full object-cover object-top"
+                  className="w-full h-full object-cover object-center"
                 />
               </div>
               <div className="p-3 text-center space-y-1">

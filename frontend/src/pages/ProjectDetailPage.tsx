@@ -80,6 +80,44 @@ const projectsMap: Record<string, ProjectDetail> = {
     technologies: ["React", "FastAPI", "LangGraph", "Voyage", "Supabase", "pgvector", "OpenStreetMap"],
     githubUrl: "https://github.com/Temkin236",
   },
+  "aura-ai": {
+    slug: "aura-ai",
+    title: "AURA AI",
+    tagline: "Multi-Persona Intelligent Conversational System",
+    role: "Lead Full-Stack Developer",
+    coverImage: "/images/aura-ai.png",
+    description:
+      "A multi-persona AI conversational system that seamlessly adapts tone, expertise, and reasoning depth according to the user's role and domain.",
+    problem:
+      "One-size-fits-all chatbots fail to adapt when switching between strict technical code review, creative ideation, and educational tutoring.",
+    solution:
+      "Engineered dynamic persona switching with persistent memory embeddings, contextual system prompting, and a polished interface.",
+    contribution:
+      "Built the React frontend, created the Express API server, integrated Gemini API endpoints, and implemented persona state management.",
+    architecture:
+      "React + Vite + Tailwind CSS + Node.js/Express + Gemini API + LocalStorage state.",
+    technologies: ["React", "Vite", "Tailwind CSS", "Express", "Gemini API", "JavaScript"],
+    githubUrl: "https://github.com/Temkin236/Aura_AI",
+  },
+  "astu-coans": {
+    slug: "astu-coans",
+    title: "ASTU CoANS Portal",
+    tagline: "University Academic & Administrative Web Platform",
+    role: "Full-Stack Web Developer",
+    coverImage: "/images/astu-coans.png",
+    description:
+      "Official college web platform for the College of Applied Natural Sciences (CoANS) at Adama Science and Technology University.",
+    problem:
+      "Departmental announcements, academic schedules, faculty directories, and student resources were fragmented across physical bulletin boards.",
+    solution:
+      "Centralized administrative portal featuring responsive design, secure staff announcement publishing, department overviews, and student document downloads.",
+    contribution:
+      "Engineered the full frontend interface, administrative dashboard, and database schema, ensuring mobile accessibility across university networks.",
+    architecture:
+      "Modern responsive web architecture with role-based administrative authentication and optimized asset delivery.",
+    technologies: ["React", "JavaScript", "Tailwind CSS", "Node.js", "REST APIs"],
+    githubUrl: "https://github.com/Temkin236",
+  },
 };
 
 export const ProjectDetailPage: React.FC = () => {

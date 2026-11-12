@@ -152,7 +152,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 <img
                   src="/images/temkin-portrait.jpg"
                   alt="Temkin Abdulmelik — Portrait"
-                  className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-700"
+                  className="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-700"
                 />
               </div>
 
@@ -220,10 +220,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               <Briefcase className="w-5 h-5" />
             </div>
             <span className="text-2xl sm:text-3xl font-extrabold text-[#1E1B24] font-sans">
-              8+ Projects
+              5+ Projects
             </span>
             <span className="text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-[#5E5868]">
-              Engineered & Deployed
+              Full-Stack & AI Systems
             </span>
           </div>
 
@@ -233,10 +233,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               <CheckCircle2 className="w-5 h-5" />
             </div>
             <span className="text-2xl sm:text-3xl font-extrabold text-[#1E1B24] font-sans">
-              100% Tests
+              Dev Mentor
             </span>
             <span className="text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-[#5E5868]">
-              Deterministic Passing Rate
+              CSEC ASTU Community
             </span>
           </div>
 
