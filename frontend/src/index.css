@@ -160,3 +160,19 @@ body {
   box-shadow: 0 10px 24px -6px rgba(138, 117, 179, 0.18);
   border-color: #8A75B3;
 }
+
+/* Focus Ring & Keyboard Accessibility */
+:focus-visible {
+  outline: 2px solid #8A75B3;
+  outline-offset: 3px;
+  border-radius: 0.375rem;
+}
+
+/* Glassmorphism Accents */
+.glass-lilac {
+  background: rgba(245, 242, 250, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(216, 205, 238, 0.5);
+}
+
