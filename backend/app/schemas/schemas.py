@@ -1,8 +1,10 @@
-from pydantic import BaseModel, EmailStr, Field
+from pydantic import BaseModel, EmailStr, Field, ConfigDict
 from typing import List, Optional, Dict, Any
 from datetime import datetime
 
 class ProfileSchema(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
     id: int
     name: str
     headline: str
@@ -27,9 +29,6 @@ class ProfileSchema(BaseModel):
     cheers_count: int
     updated_at: Optional[datetime] = None
 
-    class Config:
-        from_attributes = True
-
 class ProfileUpdateSchema(BaseModel):
     headline: Optional[str] = None
     supporting_headline: Optional[str] = None
@@ -44,6 +43,8 @@ class ProfileUpdateSchema(BaseModel):
     personal_facts: Optional[List[Dict[str, Any]]] = None
 
 class ProjectSchema(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
     id: int
     slug: str
     title: str
@@ -58,22 +59,19 @@ class ProjectSchema(BaseModel):
     key_decisions: List[str] = []
     challenges: Optional[str] = None
     achievements: Optional[str] = None
+    metrics: Dict[str, Any] = {}
     github_url: Optional[str] = None
     live_url: Optional[str] = None
     cover_image: Optional[str] = None
     screenshots: List[str] = []
     featured: bool = False
     sort_order: int = 0
-    created_at: Optional[datetime] = None
 
-    class Config:
-        from_attributes = True
-
-class ProjectCreateSchema(BaseModel):
+class ProjectCreateUpdateSchema(BaseModel):
     slug: str
     title: str
     subtitle: Optional[str] = None
-    category: str = "AI Application"
+    category: str
     description: Optional[str] = None
     problem: Optional[str] = None
     solution: Optional[str] = None
@@ -83,6 +81,7 @@ class ProjectCreateSchema(BaseModel):
     key_decisions: List[str] = []
     challenges: Optional[str] = None
     achievements: Optional[str] = None
+    metrics: Dict[str, Any] = {}
     github_url: Optional[str] = None
     live_url: Optional[str] = None
     cover_image: Optional[str] = None
@@ -91,6 +90,8 @@ class ProjectCreateSchema(BaseModel):
     sort_order: int = 0
 
 class TechnologySchema(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
     id: int
     name: str
     category: str
@@ -100,10 +101,9 @@ class TechnologySchema(BaseModel):
     icon: str = "code"
     sort_order: int = 0
 
-    class Config:
-        from_attributes = True
-
 class TimelineEventSchema(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
     id: int
     year: str
     title: str
@@ -113,10 +113,9 @@ class TimelineEventSchema(BaseModel):
     highlight: bool = False
     sort_order: int = 0
 
-    class Config:
-        from_attributes = True
-
 class PhotoSchema(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
     id: int
     title: str
     caption: Optional[str] = None
@@ -126,10 +125,9 @@ class PhotoSchema(BaseModel):
     date_taken: Optional[str] = None
     sort_order: int = 0
 
-    class Config:
-        from_attributes = True
-
 class KnowledgeDocSchema(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
     id: int
     title: str
     category: str
@@ -142,9 +140,6 @@ class KnowledgeDocSchema(BaseModel):
     created_at: Optional[datetime] = None
     updated_at: Optional[datetime] = None
 
-    class Config:
-        from_attributes = True
-
 class ContactMessageCreateSchema(BaseModel):
     name: str
     email: EmailStr
@@ -153,6 +148,8 @@ class ContactMessageCreateSchema(BaseModel):
     inquiry_type: Optional[str] = "Collaboration"
 
 class ContactMessageSchema(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
     id: int
     name: str
     email: str
@@ -162,9 +159,6 @@ class ContactMessageSchema(BaseModel):
     is_read: bool
     is_archived: bool
     created_at: Optional[datetime] = None
-
-    class Config:
-        from_attributes = True
 
 class ChatCitationSchema(BaseModel):
     title: str
@@ -179,16 +173,21 @@ class AdminLoginSchema(BaseModel):
     username: str
     password: str
 
-class TokenSchema(BaseModel):
+class TokenResponseSchema(BaseModel):
     access_token: str
     token_type: str = "bearer"
 
+TokenSchema = TokenResponseSchema
+
 class AnalyticsOverviewSchema(BaseModel):
-    total_views: int
-    total_projects: int
-    total_messages: int
-    unread_messages: int
-    coffees_brewed: int
-    cheers_given: int
-    total_ai_questions: int
+    total_views: int = 0
+    total_projects: int = 0
+    total_messages: int = 0
+    unread_messages: int = 0
+    coffees_brewed: int = 0
+    cheers_given: int = 0
+    total_ai_questions: int = 0
     recent_questions: List[Dict[str, Any]] = []
+
+ProjectCreateSchema = ProjectCreateUpdateSchema
+AdminOverviewSchema = AnalyticsOverviewSchema
