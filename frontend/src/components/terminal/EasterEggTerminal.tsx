@@ -113,7 +113,7 @@ export const EasterEggTerminal: React.FC<EasterEggTerminalProps> = ({
             <p>• <span className="text-[#8A75B3]">Agentic AI:</span> LangGraph, Google GenAI SDK, Prompt Optimization, Tool Calling</p>
             <p>• <span className="text-[#8A75B3]">RAG & Search:</span> PostgreSQL, pgvector, Semantic Embeddings, Document Chunking</p>
             <p>• <span className="text-[#8A75B3]">Backend:</span> Python, FastAPI, SQLAlchemy 2, Alembic, Pydantic, Redis</p>
-            <p>• <span className="text-[#8A75B3]">Frontend:</span> Next.js 14/16, React 19, TypeScript, Tailwind CSS, Framer Motion</p>
+            <p>• <span className="text-[#8A75B3]">Frontend:</span> React 19, Vite, TypeScript, Tailwind CSS, Framer Motion</p>
             <p>• <span className="text-[#8A75B3]">Environment:</span> Linux (Arch/Omarchy), Docker, Git, REST APIs</p>
           </div>
         );

@@ -46,7 +46,7 @@ export const ExpertiseAndProcess: React.FC = () => {
     {
       id: "fullstack-web",
       title: "FULL-STACK WEB",
-      description: "Building reactive Next.js 16, TypeScript, and fluid Framer Motion digital experiences with luxury editorial aesthetics.",
+      description: "Building reactive React 19, Vite, TypeScript, and fluid Framer Motion digital experiences with luxury editorial aesthetics.",
       previewType: "web",
       tag: "Modern UI",
       link: "/projects"
@@ -59,7 +59,7 @@ export const ExpertiseAndProcess: React.FC = () => {
     { name: "Google Gemini", category: "LLM Reasoning", icon: "✨" },
     { name: "LangGraph", category: "Agent Graphs", icon: "🕸️" },
     { name: "PostgreSQL", category: "pgvector DB", icon: "🐘" },
-    { name: "Next.js", category: "App Router", icon: "▲" },
+    { name: "React 19", category: "SPA & Hooks", icon: "⚛️" },
     { name: "TypeScript", category: "Type Safety", icon: "📘" },
     { name: "Docker", category: "Containers", icon: "🐳" },
   ];
@@ -170,7 +170,7 @@ export const ExpertiseAndProcess: React.FC = () => {
                   <div className="w-full space-y-1.5 text-[9px] font-mono text-[#5E5868]">
                     <div className="flex items-center gap-1 text-[#8A75B3] font-semibold">
                       <Layout className="w-3 h-3" />
-                      <span>Next.js 16 + Framer</span>
+                      <span>React 19 + Framer</span>
                     </div>
                     <div className="h-1.5 w-full bg-[#D8CDEE] rounded-full" />
                   </div>

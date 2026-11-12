@@ -81,12 +81,12 @@ export const ProjectUniverse: React.FC = () => {
       contribution:
         "Built document extraction pipelines, implemented cosine similarity vector search in PostgreSQL (pgvector), designed the LangGraph retrieval loop, and created the citation UI.",
       architecture:
-        "FastAPI Backend + PostgreSQL pgvector + LangGraph + Gemini Flash + Next.js Frontend with streaming SSE and clickable citations.",
+        "FastAPI Backend + PostgreSQL pgvector + LangGraph + Gemini Flash + React Frontend with streaming SSE and clickable citations.",
       challenges:
         "Balancing chunk size vs. context window coherence; ensuring exact paragraph citations without increasing latency.",
       achievements:
         "Achieved sub-second retrieval across hundreds of documentation pages with 100% cited provenance for every generated assertion.",
-      technologies: ["LangGraph", "FastAPI", "PostgreSQL", "pgvector", "Gemini API", "Python", "Next.js"],
+      technologies: ["LangGraph", "FastAPI", "PostgreSQL", "pgvector", "Gemini API", "Python", "React"],
       githubUrl: "https://github.com/Temkin236/Knowledge_AI",
       liveUrl: "https://github.com/Temkin236/Knowledge_AI",
     },
@@ -107,12 +107,12 @@ export const ProjectUniverse: React.FC = () => {
       contribution:
         "Mapped ASTU landmarks, configured pgvector spatial queries, authored LangGraph intent classifiers, and built the responsive mobile navigation frontend.",
       architecture:
-        "Next.js App Router + OpenStreetMap Leaflet + FastAPI + LangGraph + Voyage Embeddings + Supabase pgvector.",
+        "React + OpenStreetMap Leaflet + FastAPI + LangGraph + Voyage Embeddings + Supabase pgvector.",
       challenges:
         "Accurately geocoding unnumbered university buildings and handling multi-lingual queries (English, Amharic, Afaan Oromoo).",
       achievements:
         "Demonstrated live walking routes, landmark detection, and intelligent question answering for university faculties.",
-      technologies: ["Next.js", "FastAPI", "LangGraph", "Voyage", "Supabase", "pgvector", "OpenStreetMap"],
+      technologies: ["React", "FastAPI", "LangGraph", "Voyage", "Supabase", "pgvector", "OpenStreetMap"],
       githubUrl: "https://github.com/Temkin236",
     },
 

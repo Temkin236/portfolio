@@ -56,7 +56,7 @@ const projectsMap: Record<string, ProjectDetail> = {
     contribution:
       "Built document extraction pipelines, implemented cosine similarity vector search in PostgreSQL (pgvector), designed the LangGraph retrieval loop, and created the citation UI.",
     architecture:
-      "FastAPI Backend + PostgreSQL pgvector + LangGraph + Gemini Flash + Next.js Frontend with streaming SSE and clickable citations.",
+      "FastAPI Backend + PostgreSQL pgvector + LangGraph + Gemini Flash + React 19 Frontend with streaming SSE and clickable citations.",
     technologies: ["LangGraph", "FastAPI", "PostgreSQL", "pgvector", "Gemini API", "Python", "React"],
     githubUrl: "https://github.com/Temkin236/Knowledge_AI",
     liveUrl: "https://github.com/Temkin236/Knowledge_AI",

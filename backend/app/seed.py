@@ -100,8 +100,8 @@ def seed_database():
                     "problem": "University students and community members needed rapid, context-aware information synthesis and automated assistance during dynamic campus and regional events.",
                     "solution": "Engineered a high-performance full-stack AI platform combining real-time LLM workflows, retrieval-augmented grounding, and clean user experience.",
                     "contribution": "Served as Lead Full-Stack Developer: architected the backend API, integrated vector retrieval workflows, and delivered the frontend interface under intense time constraints.",
-                    "architecture": "Next.js frontend communicating with a FastAPI service, PostgreSQL with pgvector for semantic retrieval, and LLM inference engine with streaming output.",
-                    "tech_stack": ["Next.js", "FastAPI", "PostgreSQL", "pgvector", "RAG", "Gemini API", "Tailwind CSS"],
+                    "architecture": "React frontend communicating with a FastAPI service, PostgreSQL with pgvector for semantic retrieval, and LLM inference engine with streaming output.",
+                    "tech_stack": ["React", "FastAPI", "PostgreSQL", "pgvector", "RAG", "Gemini API", "Tailwind CSS"],
                     "key_decisions": [
                         "Prioritized streaming responses to deliver immediate feedback to judges and users.",
                         "Employed pgvector for unified relational and vector data without additional infrastructure overhead."
@@ -147,9 +147,9 @@ def seed_database():
                     "description": "An interactive campus navigation and administrative information platform for Adama Science and Technology University combining semantic search with geospatial routing.",
                     "problem": "Navigating university campuses, finding academic departments, laboratories, and administrative offices is often confusing for new students and visitors.",
                     "solution": "Developed a unified portal pairing Leaflet/OpenStreetMap geospatial routing with an AI query engine grounded in official campus POI data.",
-                    "contribution": "Designed the geospatial data model, integrated Voyage embeddings with Supabase pgvector, and implemented Next.js map interactions.",
-                    "architecture": "Next.js frontend with Leaflet mapping, FastAPI backend, LangGraph agent for natural-language campus inquiries, and Supabase pgvector.",
-                    "tech_stack": ["Next.js", "FastAPI", "Gemini Streaming", "LangGraph", "Voyage Embeddings", "Supabase pgvector", "OpenStreetMap", "Leaflet"],
+                    "contribution": "Designed the geospatial data model, integrated Voyage embeddings with Supabase pgvector, and implemented React map interactions.",
+                    "architecture": "React frontend with Leaflet mapping, FastAPI backend, LangGraph agent for natural-language campus inquiries, and Supabase pgvector.",
+                    "tech_stack": ["React", "FastAPI", "Gemini Streaming", "LangGraph", "Voyage Embeddings", "Supabase pgvector", "OpenStreetMap", "Leaflet"],
                     "key_decisions": [
                         "Adopted OpenStreetMap and Leaflet for lightweight, customizable vector map rendering without external API license friction.",
                         "Used hybrid search: spatial proximity filtering combined with semantic intent matching."
@@ -196,8 +196,8 @@ def seed_database():
                     "problem": "Synthesizing deep technical literature and architecture trade-offs manually requires hours of repetitive querying and note-taking.",
                     "solution": "Built a coordinated multi-agent workflow using LangGraph where planner, researcher, critic, and synthesizer agents collaborate autonomously.",
                     "contribution": "Engineered the agent state machine, search orchestration, reflection loops, and responsive research report UI.",
-                    "architecture": "FastAPI + LangGraph multi-agent state graph + Next.js interactive dashboard with real-time agent thought streaming.",
-                    "tech_stack": ["Python", "LangGraph", "FastAPI", "Next.js", "Gemini 2.5", "Docker"],
+                    "architecture": "FastAPI + LangGraph multi-agent state graph + React interactive dashboard with real-time agent thought streaming.",
+                    "tech_stack": ["Python", "LangGraph", "FastAPI", "React", "Gemini 2.5", "Docker"],
                     "key_decisions": [
                         "Implemented explicit verification and critic loops to filter out low-confidence research claims before final synthesis."
                     ],
@@ -310,7 +310,7 @@ def seed_database():
                 {"name": "pytest & Automation", "category": "Python Backend", "description": "Automated testing framework for Python systems.", "how_used": "Validates API behavior, citation accuracy, and database transactions.", "related_projects": ["Knowledge AI", "Canary AI"], "icon": "play", "sort_order": 13},
 
                 # Frontend Engineering
-                {"name": "Next.js 14", "category": "Frontend Engineering", "description": "React framework for server-rendered and static web applications.", "how_used": "Builds fast, SEO-optimized web experiences with App Router and server components.", "related_projects": ["Meri AI", "ASTU Campus Navigator", "Temkin's World"], "icon": "globe", "sort_order": 14},
+                {"name": "React 19", "category": "Frontend Engineering", "description": "Modern component-based frontend framework for high-performance reactive applications.", "how_used": "Builds interactive user interfaces, custom design systems, and client-side application state.", "related_projects": ["Meri AI", "ASTU Campus Navigator", "Temkin's World", "AURA AI"], "icon": "code", "sort_order": 14},
                 {"name": "TypeScript", "category": "Frontend Engineering", "description": "Typed superset of JavaScript providing compile-time correctness.", "how_used": "Ensures end-to-end type safety between backend schemas and UI components.", "related_projects": ["AURA AI", "Temkin's World"], "icon": "file-code", "sort_order": 15},
                 {"name": "Tailwind CSS", "category": "Frontend Engineering", "description": "Utility-first CSS framework for modern responsive design.", "how_used": "Implements bespoke design systems, color tokens, and layout rhythm.", "related_projects": ["AURA AI", "Temkin's World"], "icon": "palette", "sort_order": 16},
                 {"name": "Framer Motion", "category": "Frontend Engineering", "description": "Production-ready motion library for React.", "how_used": "Creates luxurious spring transitions, particle reveals, and interactive micro-interactions.", "related_projects": ["Temkin's World"], "icon": "activity", "sort_order": 17},
@@ -486,7 +486,7 @@ AI-focused full-stack developer and Electronics & Communication Engineering unde
 
 ## Key Projects
 1. Meri AI (Hackathon Project)
-- Led full-stack development of an AI-powered application built with Next.js, FastAPI, PostgreSQL/pgvector, and LLM/RAG workflows.
+- Led full-stack development of an AI-powered application built with React, FastAPI, PostgreSQL/pgvector, and LLM/RAG workflows.
 - Won 1st place at the CSEC ASTU Hackathon v1.0 as part of Team Divas.
 
 2. Knowledge AI (RAG & Document Intelligence)
@@ -495,7 +495,7 @@ AI-focused full-stack developer and Electronics & Communication Engineering unde
 - Validated retrieval, abstention, and citation behavior through automated benchmarks (19 backend tests, 7 frontend tests passing).
 
 3. ASTU Campus Navigator (AI-Powered Campus Information)
-- Developed a campus navigation and information platform using Next.js, FastAPI, Gemini streaming, LangGraph, Voyage embeddings, Supabase pgvector, and OpenStreetMap/Leaflet.
+- Developed a campus navigation and information platform using React, FastAPI, Gemini streaming, LangGraph, Voyage embeddings, Supabase pgvector, and OpenStreetMap/Leaflet.
 - Integrated semantic retrieval with campus points of interest, routing information, and an administrative portal.
 
 4. AURA AI (Multi-Persona AI Assistant)
@@ -511,7 +511,7 @@ AI-focused full-stack developer and Electronics & Communication Engineering unde
 ## Technical Skills
 - Languages: Python, JavaScript, TypeScript, SQL, Bash, C/C++ basics.
 - Backend & APIs: FastAPI, Node.js, Express, REST APIs, Server-Sent Events (SSE), SQLAlchemy 2, Pydantic v2.
-- Frontend: React, Next.js 14, Vite, Tailwind CSS, Framer Motion, HTML5, Vanilla CSS.
+- Frontend: React 19, Vite, TypeScript, Tailwind CSS, Framer Motion, HTML5, Vanilla CSS.
 - AI & Data: LangGraph, Gemini API, RAG architectures, pgvector, Voyage embeddings, Semantic Search, Prompt Engineering, AI Benchmarking.
 - Databases: PostgreSQL, Supabase, SQLite, Redis.
 - Engineering & DevOps: Linux, Docker, Git, GitHub, pytest, Automated Testing, Agile Pair Programming.

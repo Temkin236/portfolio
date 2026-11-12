@@ -103,7 +103,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenTerminal, onOpenCoffee }) 
       <div className="max-w-7xl mx-auto mt-8 pt-6 border-t border-gray-100 flex flex-col sm:flex-row items-center justify-between text-[11px] text-[#5E5868] gap-2">
         <p>© {new Date().getFullYear()} Temkin Abdulmelik. All rights reserved.</p>
         <p className="flex items-center gap-1">
-          Designed with 💜 luxury editorial aesthetics, Next.js, and Agentic AI.
+          Designed with 💜 luxury editorial aesthetics, React, and Agentic AI.
         </p>
       </div>
       </div>

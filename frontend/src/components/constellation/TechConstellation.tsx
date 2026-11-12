@@ -64,13 +64,13 @@ export const TechConstellation: React.FC = () => {
       relatedProjects: ["Knowledge AI", "ASTU Campus Navigator"],
     },
     {
-      id: "nextjs",
-      name: "Next.js & React 19",
+      id: "react",
+      name: "React 19 & Vite",
       category: "frontend",
       categoryLabel: "Frontend Engineering",
-      description: "React framework with App Router, server-rendered components, and streaming UI.",
-      howTemkinUsesIt: "Builds responsive client architectures with streaming AI responses, editorial aesthetics, and client-side caching.",
-      relatedProjects: ["ASTU Campus Navigator", "Temkin's World Portfolio"],
+      description: "Modern component-driven web architecture with reactive state hooks, Vite bundler, and client-side routing.",
+      howTemkinUsesIt: "Builds high-performance client applications with streaming AI responses, editorial aesthetics, and client-side caching.",
+      relatedProjects: ["ASTU Campus Navigator", "Temkin's World Portfolio", "AURA AI"],
     },
     {
       id: "typescript",
