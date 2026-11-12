@@ -12,6 +12,7 @@ import ContactPage from "./pages/ContactPage";
 import SearchPage from "./pages/SearchPage";
 import PrivacyPage from "./pages/PrivacyPage";
 import AdminPage from "./pages/AdminPage";
+import { NotFoundPage } from "./pages/NotFoundPage";
 
 // Helper component that scrolls window to top on route change
 function ScrollToTop() {
@@ -49,7 +50,7 @@ export const App: React.FC = () => {
         <Route path="/privacy" element={<PrivacyPage />} />
         <Route path="/admin" element={<AdminPage />} />
         <Route path="/admin/:tab" element={<AdminPage />} />
-        <Route path="*" element={<HomePage />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </>
   );
