@@ -8,12 +8,16 @@ import { CheersCelebration } from "@/components/celebration/CheersButton";
 import { AiCompanionModal } from "@/components/ai-companion/AiCompanionModal";
 import { EasterEggTerminal } from "@/components/terminal/EasterEggTerminal";
 
+import { DEPLOYED_PROJECTS } from "@/data/deployedProjects";
+
 interface ProjectItem {
   slug: string;
   title: string;
   category: string;
   description: string;
   tech_stack: string[];
+  deployedUrl?: string;
+  githubUrl?: string;
 }
 
 export const SearchPage: React.FC = () => {
@@ -24,17 +28,27 @@ export const SearchPage: React.FC = () => {
   const [coffeeCount, setCoffeeCount] = useState(1);
 
   const [query, setQuery] = useState("");
-  const [projects, setProjects] = useState<ProjectItem[]>([]);
-  const [loading, setLoading] = useState(true);
+  const initialProjects: ProjectItem[] = DEPLOYED_PROJECTS.map((dp) => ({
+    slug: dp.slug,
+    title: dp.title,
+    category: dp.category,
+    description: dp.description,
+    tech_stack: dp.technologies,
+    deployedUrl: dp.deployedUrl,
+    githubUrl: dp.githubUrl,
+  }));
+  const [projects, setProjects] = useState<ProjectItem[]>(initialProjects);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     fetch("/api/projects")
-      .then((res) => (res.ok ? res.json() : []))
+      .then((res) => (res.ok ? res.json() : null))
       .then((data) => {
-        setProjects(data);
-        setLoading(false);
+        if (data && Array.isArray(data) && data.length > 0) {
+          setProjects(data);
+        }
       })
-      .catch(() => setLoading(false));
+      .catch(() => {});
   }, []);
 
   const filteredProjects = projects.filter((p) => {
@@ -138,6 +152,17 @@ export const SearchPage: React.FC = () => {
                       </span>
                     ))}
                   </div>
+
+                  {p.deployedUrl && (
+                    <div className="pt-3 mt-2 border-t border-gray-100 flex items-center justify-between text-xs">
+                      <span className="text-[#8A75B3] font-semibold hover:underline">
+                        Details &amp; Architecture →
+                      </span>
+                      <span className="px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 text-[10px] font-bold border border-emerald-200">
+                        Live Deployed 🟢
+                      </span>
+                    </div>
+                  )}
                 </Link>
               ))}
             </div>

@@ -15,6 +15,7 @@ import { CheersCelebration } from "@/components/celebration/CheersButton";
 import { AiCompanionModal } from "@/components/ai-companion/AiCompanionModal";
 import { EasterEggTerminal } from "@/components/terminal/EasterEggTerminal";
 import { useDocumentTitle } from "@/hooks/useDocumentTitle";
+import { getAssetUrl } from "@/utils/assetPath";
 
 export const AboutPage: React.FC = () => {
   useDocumentTitle("About — Story & Engineering Journey");
@@ -63,7 +64,7 @@ export const AboutPage: React.FC = () => {
             <div className="relative mx-auto max-w-sm rounded-3xl overflow-hidden shadow-xl border border-[#D8CDEE]/60 bg-white p-3">
               <div className="relative aspect-[4/5] rounded-2xl overflow-hidden bg-[#F5F2FA]">
                 <img
-                  src="/images/temkin-portrait.jpg"
+                  src={getAssetUrl("/images/temkin-portrait.jpg")}
                   alt="Temkin Abdulmelik"
                   className="w-full h-full object-cover object-center"
                 />

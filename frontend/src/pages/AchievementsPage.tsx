@@ -7,6 +7,7 @@ import { CoffeeCorner } from "@/components/coffee/CoffeeCorner";
 import { CheersCelebration } from "@/components/celebration/CheersButton";
 import { AiCompanionModal } from "@/components/ai-companion/AiCompanionModal";
 import { EasterEggTerminal } from "@/components/terminal/EasterEggTerminal";
+import { getAssetUrl } from "@/utils/assetPath";
 
 export const AchievementsPage: React.FC = () => {
   const [coffeeModalOpen, setCoffeeModalOpen] = useState(false);
@@ -22,7 +23,7 @@ export const AchievementsPage: React.FC = () => {
       organization: "Computer Science & Engineering Community (CSEC ASTU)",
       date: "2024",
       category: "Hackathon",
-      image: "/images/hackathon-award.jpg",
+      image: getAssetUrl("/images/hackathon-award.jpg"),
       description: "Secured First Place across 20+ competitive university teams in an intensive 24-hour sprint. Served as full-stack architect of Meri AI, an intelligent agent assisting campus workflows.",
       highlights: [
         "Led full-stack architecture and rapid API implementation using Python & FastAPI",
@@ -37,7 +38,7 @@ export const AchievementsPage: React.FC = () => {
       organization: "CSEC ASTU Campus Community",
       date: "2024 – Present",
       category: "Leadership",
-      image: "/images/astu-workshop.jpg",
+      image: getAssetUrl("/images/astu-workshop.jpg"),
       description: "Mentoring junior engineering students at ASTU in software engineering methodologies, version control with Git, RESTful API design, and modern web application development.",
       highlights: [
         "Delivered hands-on workshops on practical full-stack development",
@@ -52,7 +53,7 @@ export const AchievementsPage: React.FC = () => {
       organization: "Autonomous Research & Engineering",
       date: "2024 – Present",
       category: "Technical",
-      image: "/images/projects/knowledge-ai-landing.png",
+      image: getAssetUrl("/images/projects/knowledge-ai-landing.png"),
       description: "Designed, benchmarked, and released production-grade open architectures including Knowledge AI with pgvector semantic search and ASTU Campus Navigator.",
       highlights: [
         "Implemented strict citation grounding eliminating hallucinations in retrieval pipelines",
@@ -142,7 +143,7 @@ export const AchievementsPage: React.FC = () => {
 
               <div className="lg:col-span-5 relative aspect-[4/3] rounded-2xl overflow-hidden border border-[#D8CDEE]/70 shadow-md bg-[#F5F2FA]">
                 <img
-                  src={item.image}
+                  src={getAssetUrl(item.image)}
                   alt={item.title}
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                 />

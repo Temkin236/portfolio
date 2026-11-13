@@ -17,6 +17,7 @@ import {
   ExternalLink
 } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "@/components/ui/Icons";
+import { getAssetUrl } from "@/utils/assetPath";
 
 interface HeroSectionProps {
   onOpenCoffee: () => void;
@@ -83,7 +84,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               </a>
 
               <a
-                href="/documents/Temkin_Abdulmelik_CV.pdf"
+                href={getAssetUrl("/documents/Temkin_Abdulmelik_CV.pdf")}
                 target="_blank"
                 download
                 className="px-6 py-3.5 rounded-full bg-white border border-[#D8CDEE] text-[#1E1B24] text-xs sm:text-sm font-semibold uppercase tracking-wider hover:border-[#8A75B3] hover:bg-[#F5F2FA] transition-all shadow-xs inline-flex items-center gap-2"
@@ -107,10 +108,11 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 href="https://github.com/Temkin236"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-1.5 hover:text-[#8A75B3] transition-colors"
+                className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-[#D8CDEE] text-[#1E1B24] hover:text-[#8A75B3] hover:border-[#8A75B3] transition-all shadow-xs"
               >
                 <GithubIcon className="w-4 h-4" />
-                <span>GitHub</span>
+                <span className="font-semibold">@Temkin236</span>
+                <span className="text-[10px] bg-[#F5F2FA] px-1.5 py-0.5 rounded-full text-[#8A75B3] font-bold">50 repos</span>
               </a>
               <span className="text-gray-300">•</span>
               <a
@@ -150,7 +152,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               {/* Portrait Container */}
               <div className="relative w-full h-full organic-portrait-frame overflow-hidden border-4 border-white bg-white/70 shadow-2xl">
                 <img
-                  src="/images/temkin-portrait.jpg"
+                  src={getAssetUrl("/images/temkin-portrait.jpg")}
                   alt="Temkin Abdulmelik — Portrait"
                   className="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-700"
                 />

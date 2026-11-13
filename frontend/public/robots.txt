@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /admin
 
-Sitemap: https://temkin.dev/sitemap.xml
+Sitemap: https://temkin.tech/sitemap.xml

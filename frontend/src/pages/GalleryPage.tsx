@@ -11,7 +11,7 @@ import { EasterEggTerminal } from "@/components/terminal/EasterEggTerminal";
 import { useDocumentTitle } from "@/hooks/useDocumentTitle";
 
 export const GalleryPage: React.FC = () => {
-  useDocumentTitle("Gallery — Memories & Photography");
+  useDocumentTitle("Memories in Focus — Certificates & LinkedIn Journal");
   const [coffeeModalOpen, setCoffeeModalOpen] = useState(false);
   const [cheersModalOpen, setCheersModalOpen] = useState(false);
   const [aiChatOpen, setAiChatOpen] = useState(false);

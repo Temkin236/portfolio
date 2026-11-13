@@ -2,6 +2,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { ArrowUp, Terminal, Shield, Heart, Coffee } from "lucide-react";
+import { GithubIcon } from "@/components/ui/Icons";
 
 interface FooterProps {
   onOpenTerminal: () => void;
@@ -64,7 +65,17 @@ export const Footer: React.FC<FooterProps> = ({ onOpenTerminal, onOpenCoffee }) 
         </div>
 
         {/* Interactive Shortcuts */}
-        <div className="flex items-center gap-4 text-xs font-medium text-[#5E5868]">
+        <div className="flex flex-wrap items-center justify-center md:justify-start gap-4 text-xs font-medium text-[#5E5868]">
+          <a
+            href="https://github.com/Temkin236"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-1.5 hover:text-[#8A75B3] transition-colors"
+          >
+            <GithubIcon className="w-3.5 h-3.5" />
+            <span>GitHub (@Temkin236)</span>
+          </a>
+          <span>•</span>
           <button
             onClick={onOpenCoffee}
             className="flex items-center gap-1.5 hover:text-[#8A75B3] transition-colors cursor-pointer"

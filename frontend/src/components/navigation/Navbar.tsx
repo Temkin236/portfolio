@@ -1,7 +1,8 @@
 
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Coffee, Sparkles, Terminal, MessageSquare, Menu, X, ArrowUpRight } from "lucide-react";
+import { Coffee, Sparkles, Terminal, MessageSquare, Menu, X, ArrowUpRight, ExternalLink } from "lucide-react";
+import { GithubIcon } from "@/components/ui/Icons";
 
 interface NavbarProps {
   onOpenCoffee: () => void;
@@ -81,6 +82,18 @@ export const Navbar: React.FC<NavbarProps> = ({
 
         {/* Interactive Action Shortcuts */}
         <div className="hidden sm:flex items-center gap-2.5">
+          {/* GitHub Temkin236 Link */}
+          <a
+            href="https://github.com/Temkin236"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="Visit Temkin236 on GitHub"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/90 border border-[#D8CDEE] text-[#1E1B24] text-xs font-semibold hover:border-[#8A75B3] hover:bg-[#F5F2FA] transition-all shadow-xs cursor-pointer group"
+          >
+            <GithubIcon className="w-3.5 h-3.5 text-[#1E1B24] group-hover:scale-110 transition-transform" />
+            <span>Temkin236</span>
+          </a>
+
           {/* Coffee Button with Counter */}
           <button
             onClick={onOpenCoffee}
@@ -193,14 +206,27 @@ export const Navbar: React.FC<NavbarProps> = ({
             </button>
           </div>
 
-          <div className="pt-2 text-center">
-            <Link
-              to="/admin"
-              className="inline-flex items-center gap-1 text-xs text-[#8A75B3] font-medium hover:underline"
+          <div className="pt-2 flex flex-col gap-2">
+            <a
+              href="https://github.com/Temkin236"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-[#1E1B24] text-white text-xs font-semibold"
             >
-              <span>Admin Studio Access</span>
-              <ArrowUpRight className="w-3 h-3" />
-            </Link>
+              <GithubIcon className="w-4 h-4 text-white" />
+              <span>Visit @Temkin236 on GitHub</span>
+              <ExternalLink className="w-3.5 h-3.5 text-gray-400" />
+            </a>
+
+            <div className="text-center pt-1">
+              <Link
+                to="/admin"
+                className="inline-flex items-center gap-1 text-xs text-[#8A75B3] font-medium hover:underline"
+              >
+                <span>Admin Studio Access</span>
+                <ArrowUpRight className="w-3 h-3" />
+              </Link>
+            </div>
           </div>
         </div>
       )}
