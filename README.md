@@ -4,6 +4,7 @@
 ### AI-Powered Personal Portfolio & Digital Identity Platform
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-purple.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
+[![Live Demo](https://img.shields.io/badge/Live_Demo-Vercel%20Production-7928CA?style=for-the-badge&logo=vercel&logoColor=white)](https://portfolio-ecru-eight-pekn4mb5hj.vercel.app/)
 [![React 19](https://img.shields.io/badge/React-19.3-61dafb?style=for-the-badge&logo=react&logoColor=black)](https://react.dev)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.115-009688?style=for-the-badge&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com)
 [![Python 3.12](https://img.shields.io/badge/Python-3.12-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
@@ -16,11 +17,17 @@
   Electronics & Communication Engineering Student at ASTU • 1st Place CSEC ASTU Hackathon Winner • Agentic AI & Full-Stack Developer
 </p>
 
+### 🌐 [**Visit Live Production Site → portfolio-ecru-eight-pekn4mb5hj.vercel.app**](https://portfolio-ecru-eight-pekn4mb5hj.vercel.app/)
+
 [Explore Projects](#-featured-projects) • [System Architecture](#-system-architecture) • [Screenshots](#-interface-gallery) • [Local Setup](#-quickstart) • [Admin Studio](#-admin-studio)
 
 </div>
 
 ---
+
+> [!TIP]
+> **Live Deployment**: The portfolio is deployed and accessible at [https://portfolio-ecru-eight-pekn4mb5hj.vercel.app/](https://portfolio-ecru-eight-pekn4mb5hj.vercel.app/).
+
 
 ## 📸 Interface Gallery
 

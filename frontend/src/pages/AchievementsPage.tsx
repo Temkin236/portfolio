@@ -7,9 +7,11 @@ import { CoffeeCorner } from "@/components/coffee/CoffeeCorner";
 import { CheersCelebration } from "@/components/celebration/CheersButton";
 import { AiCompanionModal } from "@/components/ai-companion/AiCompanionModal";
 import { EasterEggTerminal } from "@/components/terminal/EasterEggTerminal";
+import { useDocumentTitle } from "@/hooks/useDocumentTitle";
 import { getAssetUrl } from "@/utils/assetPath";
 
 export const AchievementsPage: React.FC = () => {
+  useDocumentTitle("Achievements & Honors — Milestones of Craft");
   const [coffeeModalOpen, setCoffeeModalOpen] = useState(false);
   const [cheersModalOpen, setCheersModalOpen] = useState(false);
   const [aiChatOpen, setAiChatOpen] = useState(false);
@@ -156,6 +158,8 @@ export const AchievementsPage: React.FC = () => {
       <Footer 
         onOpenTerminal={() => setTerminalOpen(true)}
         onOpenCoffee={() => setCoffeeModalOpen(true)}
+        onOpenCheers={() => setCheersModalOpen(true)}
+        onOpenAiChat={() => setAiChatOpen(true)}
       />
 
       <CoffeeCorner

@@ -7,8 +7,10 @@ import { CoffeeCorner } from "@/components/coffee/CoffeeCorner";
 import { CheersCelebration } from "@/components/celebration/CheersButton";
 import { AiCompanionModal } from "@/components/ai-companion/AiCompanionModal";
 import { EasterEggTerminal } from "@/components/terminal/EasterEggTerminal";
+import { useDocumentTitle } from "@/hooks/useDocumentTitle";
 
 export const PrivacyPage: React.FC = () => {
+  useDocumentTitle("Privacy & Information Security — Data Principles");
   const [coffeeModalOpen, setCoffeeModalOpen] = useState(false);
   const [cheersModalOpen, setCheersModalOpen] = useState(false);
   const [aiChatOpen, setAiChatOpen] = useState(false);
@@ -109,6 +111,8 @@ export const PrivacyPage: React.FC = () => {
       <Footer 
         onOpenTerminal={() => setTerminalOpen(true)}
         onOpenCoffee={() => setCoffeeModalOpen(true)}
+        onOpenCheers={() => setCheersModalOpen(true)}
+        onOpenAiChat={() => setAiChatOpen(true)}
       />
 
       <CoffeeCorner

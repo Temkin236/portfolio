@@ -8,8 +8,10 @@ import { CoffeeCorner } from "@/components/coffee/CoffeeCorner";
 import { CheersCelebration } from "@/components/celebration/CheersButton";
 import { AiCompanionModal } from "@/components/ai-companion/AiCompanionModal";
 import { EasterEggTerminal } from "@/components/terminal/EasterEggTerminal";
+import { useDocumentTitle } from "@/hooks/useDocumentTitle";
 
 export const ExperiencePage: React.FC = () => {
+  useDocumentTitle("Experience & Timeline — Engineering Journey");
   const [coffeeModalOpen, setCoffeeModalOpen] = useState(false);
   const [cheersModalOpen, setCheersModalOpen] = useState(false);
   const [aiChatOpen, setAiChatOpen] = useState(false);
@@ -42,6 +44,8 @@ export const ExperiencePage: React.FC = () => {
       <Footer 
         onOpenTerminal={() => setTerminalOpen(true)}
         onOpenCoffee={() => setCoffeeModalOpen(true)}
+        onOpenCheers={() => setCheersModalOpen(true)}
+        onOpenAiChat={() => setAiChatOpen(true)}
       />
 
       <CoffeeCorner

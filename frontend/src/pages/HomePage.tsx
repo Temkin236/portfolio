@@ -79,6 +79,8 @@ export const HomePage: React.FC = () => {
       <Footer
         onOpenTerminal={() => setTerminalOpen(true)}
         onOpenCoffee={() => setCoffeeModalOpen(true)}
+        onOpenCheers={() => setCheersModalOpen(true)}
+        onOpenAiChat={() => setAiChatOpen(true)}
       />
 
       {/* Modals & Overlays */}

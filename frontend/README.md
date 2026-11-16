@@ -2,6 +2,8 @@
 
 Modern, high-performance personal portfolio and digital identity platform built with **React 19**, **Vite**, **TypeScript**, **Tailwind CSS v4**, and **Framer Motion**.
 
+- **🌐 Live Production Deployment**: [https://portfolio-ecru-eight-pekn4mb5hj.vercel.app/](https://portfolio-ecru-eight-pekn4mb5hj.vercel.app/)
+
 ## Tech Stack
 - **Framework**: React 19 (SPA with React Router DOM v7)
 - **Build Tool**: Vite
