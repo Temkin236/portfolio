@@ -101,6 +101,15 @@ class TechnologySchema(BaseModel):
     icon: str = "code"
     sort_order: int = 0
 
+class TimelineEventCreateSchema(BaseModel):
+    year: str
+    title: str
+    role_or_context: Optional[str] = None
+    description: Optional[str] = None
+    category: str = "Career"
+    highlight: bool = False
+    sort_order: int = 0
+
 class TimelineEventSchema(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 
@@ -139,6 +148,26 @@ class KnowledgeDocSchema(BaseModel):
     version: int
     created_at: Optional[datetime] = None
     updated_at: Optional[datetime] = None
+    chunks_count: Optional[int] = 0
+
+class KnowledgeChunkDetailSchema(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
+    id: int
+    doc_id: int
+    chunk_index: int
+    content: str
+    is_public: bool
+
+class KnowledgeSnippetCreateSchema(BaseModel):
+    title: str
+    category: str = "Public Bio"
+    content: str
+    is_public: bool = True
+
+class RAGTestQuerySchema(BaseModel):
+    query: str
+    top_k: int = 5
 
 class ContactMessageCreateSchema(BaseModel):
     name: str

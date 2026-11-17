@@ -11,9 +11,12 @@ import {
   Calendar 
 } from "lucide-react";
 
+import { LinkedinIcon } from "@/components/ui/Icons";
+
 interface Milestone {
   year: string;
   title: string;
+  roleOrContext?: string;
   category: string;
   icon: React.ReactNode;
   description: string;
@@ -24,75 +27,84 @@ interface Milestone {
 export const EngineeringTimeline: React.FC = () => {
   const milestones: Milestone[] = [
     {
-      year: "2021",
-      title: "First Software Experiments",
-      category: "Origins",
-      icon: <Code2 className="w-5 h-5 text-[#8A75B3]" />,
+      year: "2025 — Present",
+      title: "AI Project Contributor",
+      roleOrContext: "AfterQuery & Revelo",
+      category: "Work Experience",
+      isHighlight: true,
+      icon: <Sparkles className="w-5 h-5 text-[#8A75B3]" />,
       description:
-        "Started coding during secondary school out of deep curiosity for algorithms and network protocols. Self-taught Python, core data structures, and basic scripting.",
-      tags: ["Python", "Algorithms", "Self-Taught"],
+        "Contributed to remote AI evaluation and software engineering tasks through AfterQuery and Revelo. Conducted rigorous technical problem-solving, structured reasoning reviews, and verified model outputs against complex requirements and reproducible engineering benchmarks.",
+      tags: ["AfterQuery", "Revelo", "AI Evaluation", "Model Alignment", "Code Verification", "Task Quality"],
     },
     {
-      year: "2022",
-      title: "ASTU Electronics & Communication Engineering",
-      category: "Education",
-      icon: <GraduationCap className="w-5 h-5 text-[#8A75B3]" />,
-      description:
-        "Admitted to Adama Science and Technology University (ASTU), Ethiopia's leading center of excellence for science and technology, pursuing a B.Sc. in Electronics and Communication Engineering.",
-      tags: ["ASTU", "Electronics", "Telecommunications", "Hardware/Software"],
-    },
-    {
-      year: "2023",
-      title: "Full-Stack Web & Systems Architecture",
-      category: "Engineering",
+      year: "2024 — Present",
+      title: "Independent Full-Stack & AI Developer",
+      roleOrContext: "Self-Employed / Project Engineering",
+      category: "Engineering Experience",
       icon: <Cpu className="w-5 h-5 text-[#8A75B3]" />,
       description:
-        "Expanded into full-stack web architectures, building production-style APIs with FastAPI, relational databases with PostgreSQL, and modern reactive frontends.",
-      tags: ["FastAPI", "React", "PostgreSQL", "REST APIs"],
+        "Architected and deployed end-to-end web applications and intelligent systems from scratch: multi-agent workflows with LangGraph, semantic search pipelines with pgvector cosine similarity, real-time SSE token streaming, and production FastAPI services paired with modern React frontends.",
+      tags: ["LangGraph", "FastAPI", "PostgreSQL pgvector", "Gemini 2.5", "React 19", "Automated Testing"],
+    },
+    {
+      year: "2024 — Present",
+      title: "Development Mentor",
+      roleOrContext: "Cybernauts Software Engineering Club (CSEC ASTU)",
+      category: "Leadership & Community",
+      icon: <Users className="w-5 h-5 text-[#8A75B3]" />,
+      description:
+        "Appointed official Development Mentor at CSEC ASTU. Lead hands-on code clinics, Git hygiene workshops, and collaborative development sessions for student software engineers at Adama Science and Technology University.",
+      tags: ["CSEC ASTU", "Technical Mentorship", "Git Workflows", "Python Architecture", "Workshops"],
     },
     {
       year: "2024",
-      title: "1st Place Winner — CSEC ASTU Hackathon v1.0",
-      category: "Achievement",
+      title: "1st Place Champion — CSEC ASTU Hackathon v1.0",
+      roleOrContext: "Team Divas | Meri AI",
+      category: "Hackathon Championship",
       isHighlight: true,
       icon: <Trophy className="w-5 h-5 text-amber-600" />,
       description:
-        "Led full-stack engineering for Meri AI in a 24-hour sprint and won 1st place among top university engineering teams. Appointed official Development Mentor at CSEC ASTU to train junior developers.",
-      tags: ["Meri AI", "1st Place Winner", "24h Hackathon", "CSEC ASTU Mentor"],
+        "Led full-stack engineering of Meri AI, an autonomous campus agentic intelligence system built in a 24-hour sprint. Competed against top university engineering teams and secured First Place Gold for architectural robustness, retrieval fidelity, and real-time execution.",
+      tags: ["1st Place Winner", "Meri AI", "Team Divas", "24h Hackathon Championship", "CSEC ASTU"],
     },
     {
-      year: "2024 — 2025",
-      title: "Agentic AI & RAG Engineering",
-      category: "AI Architecture",
-      icon: <Sparkles className="w-5 h-5 text-[#8A75B3]" />,
+      year: "2022 — 2027",
+      title: "B.Sc. in Electronics & Communication Engineering",
+      roleOrContext: "Adama Science and Technology University (ASTU)",
+      category: "Education",
+      icon: <GraduationCap className="w-5 h-5 text-[#8A75B3]" />,
       description:
-        "Pioneered advanced RAG pipelines with pgvector vector search, LangGraph cyclical multi-agent workflows, and citation-grounded response generation in Knowledge AI and Campus Navigator.",
-      tags: ["LangGraph", "pgvector", "Gemini 2.5", "Knowledge AI", "Campus Navigator"],
-    },
-    {
-      year: "2026 — 2027",
-      title: "Production AI Platforms & Degree Completion",
-      category: "Horizon",
-      icon: <Calendar className="w-5 h-5 text-[#8A75B3]" />,
-      description:
-        "Developing enterprise-grade AI applications, contributing to global AI open source, and completing B.Sc. Electronics & Communication Engineering at ASTU (Expected Graduation: 2027).",
-      tags: ["B.Sc. Degree '27", "Autonomous Agents", "Enterprise AI"],
+        "Enrolled in Ethiopia's leading center of excellence for science and technology. Specializing in intelligent computing, digital signal processing, telecommunications, embedded microcontrollers, and modern software architectures.",
+      tags: ["ASTU", "B.Sc. Degree '27", "Electronics", "Telecommunications", "Embedded Systems"],
     },
   ];
 
   return (
     <section id="journey" className="py-24 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
       {/* Header */}
-      <div className="text-center space-y-3 mb-20">
-        <span className="editorial-tag text-[#8A75B3]">
-          CHRONOLOGICAL EVOLUTION
-        </span>
+      <div className="text-center space-y-3 mb-16">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#D8CDEE]/50 border border-[#D8CDEE] text-[11px] font-semibold text-[#8A75B3]">
+          <LinkedinIcon className="w-3.5 h-3.5" />
+          <span>Sourced Strictly from LinkedIn Profile</span>
+        </div>
         <h2 className="font-editorial-serif text-4xl sm:text-5xl font-normal text-[#1E1B24]">
-          Engineering <span className="italic text-[#8A75B3]">Journey</span> ⏳
+          Professional <span className="italic text-[#8A75B3]">Experience</span> &amp; Timeline ⏳
         </h2>
         <p className="text-[#5E5868] max-w-xl mx-auto text-sm sm:text-base">
-          From first Python experiments to winning university hackathons and authoring autonomous agent workflows.
+          Verified roles, technical mentorship, hackathon championships, and engineering education from Temkin&apos;s LinkedIn dossier.
         </p>
+        <div className="pt-1">
+          <a
+            href="https://linkedin.com/in/temkin-abdulmelik-195582306"
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#8A75B3] hover:underline"
+          >
+            <span>View Verified LinkedIn Profile</span>
+            <span className="text-[10px]">↗</span>
+          </a>
+        </div>
       </div>
 
       {/* Vertical Spine Timeline */}
@@ -146,6 +158,11 @@ export const EngineeringTimeline: React.FC = () => {
                     <h3 className="font-editorial-serif text-xl sm:text-2xl font-medium text-[#1E1B24]">
                       {item.title}
                     </h3>
+                    {item.roleOrContext && (
+                      <p className="text-xs font-semibold text-[#8A75B3]">
+                        {item.roleOrContext}
+                      </p>
+                    )}
                   </div>
                 </div>
 

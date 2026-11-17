@@ -6,17 +6,19 @@ from app.database import get_db
 from app.config import settings
 from app.models.entities import (
     Profile, Project, Technology, Photo, KnowledgeDoc, KnowledgeChunk,
-    ContactMessage, QuestionLog, VisitorLog
+    ContactMessage, QuestionLog, VisitorLog, TimelineEvent
 )
 from app.schemas.schemas import (
     AdminLoginSchema, TokenSchema, ProfileSchema, ProfileUpdateSchema,
     ProjectSchema, ProjectCreateSchema, PhotoSchema, KnowledgeDocSchema,
-    ContactMessageSchema, AnalyticsOverviewSchema
+    ContactMessageSchema, AnalyticsOverviewSchema, KnowledgeChunkDetailSchema,
+    KnowledgeSnippetCreateSchema, RAGTestQuerySchema, TimelineEventSchema,
+    TimelineEventCreateSchema
 )
 from app.services.auth_service import (
     verify_password, create_access_token, get_current_admin, get_password_hash
 )
-from app.services.rag_service import extract_text_from_file, index_document
+from app.services.rag_service import extract_text_from_file, index_document, search_public_knowledge
 
 router = APIRouter(prefix="/api/admin", tags=["admin"])
 
@@ -186,13 +188,16 @@ def toggle_photo_visibility(
     db.commit()
     return {"success": True, "is_public": photo.is_public}
 
-# KNOWLEDGE CENTER
+# KNOWLEDGE CENTER & RAG MANAGEMENT
 @router.get("/knowledge", response_model=List[KnowledgeDocSchema])
 def list_knowledge_documents(
     db: Session = Depends(get_db),
     current_admin: str = Depends(get_current_admin)
 ):
-    return db.query(KnowledgeDoc).order_by(KnowledgeDoc.id.desc()).all()
+    docs = db.query(KnowledgeDoc).order_by(KnowledgeDoc.id.desc()).all()
+    for doc in docs:
+        doc.chunks_count = len(doc.chunks)
+    return docs
 
 @router.post("/knowledge/upload")
 async def upload_knowledge_document(
@@ -210,7 +215,7 @@ async def upload_knowledge_document(
         title=title,
         category=category,
         file_name=file.filename,
-        file_type=file.filename.split(".")[-1].lower(),
+        file_type=file.filename.split(".")[-1].lower() if "." in file.filename else "txt",
         raw_content=raw_text,
         is_published=True,
         is_public=is_public,
@@ -220,14 +225,115 @@ async def upload_knowledge_document(
     db.commit()
     db.refresh(doc)
     
-    # Index document
+    # Index document into searchable semantic chunks
     chunks_indexed = index_document(db, doc)
     
     return {
         "success": True,
         "doc_id": doc.id,
         "title": doc.title,
+        "category": doc.category,
+        "file_name": doc.file_name,
+        "file_type": doc.file_type,
         "chunks_indexed": chunks_indexed
+    }
+
+@router.post("/knowledge/snippet")
+def create_knowledge_snippet(
+    payload: KnowledgeSnippetCreateSchema,
+    db: Session = Depends(get_db),
+    current_admin: str = Depends(get_current_admin)
+):
+    doc = KnowledgeDoc(
+        title=payload.title,
+        category=payload.category,
+        file_name="direct_entry.md",
+        file_type="manual",
+        raw_content=payload.content,
+        is_published=True,
+        is_public=payload.is_public,
+        version=1
+    )
+    db.add(doc)
+    db.commit()
+    db.refresh(doc)
+    
+    chunks_indexed = index_document(db, doc)
+    return {
+        "success": True,
+        "doc_id": doc.id,
+        "title": doc.title,
+        "category": doc.category,
+        "file_name": doc.file_name,
+        "file_type": doc.file_type,
+        "chunks_indexed": chunks_indexed
+    }
+
+@router.get("/knowledge/{id}/chunks", response_model=List[KnowledgeChunkDetailSchema])
+def get_document_chunks(
+    id: int,
+    db: Session = Depends(get_db),
+    current_admin: str = Depends(get_current_admin)
+):
+    doc = db.query(KnowledgeDoc).filter(KnowledgeDoc.id == id).first()
+    if not doc:
+        raise HTTPException(status_code=404, detail="Knowledge document not found")
+    chunks = db.query(KnowledgeChunk).filter(KnowledgeChunk.doc_id == id).order_by(KnowledgeChunk.chunk_index.asc()).all()
+    return chunks
+
+@router.put("/knowledge/{id}/toggle-publish")
+def toggle_knowledge_publish(
+    id: int,
+    db: Session = Depends(get_db),
+    current_admin: str = Depends(get_current_admin)
+):
+    doc = db.query(KnowledgeDoc).filter(KnowledgeDoc.id == id).first()
+    if not doc:
+        raise HTTPException(status_code=404, detail="Knowledge document not found")
+    doc.is_published = not doc.is_published
+    db.commit()
+    chunks_count = index_document(db, doc)
+    return {"success": True, "is_published": doc.is_published, "chunks_indexed": chunks_count}
+
+@router.put("/knowledge/{id}/toggle-privacy")
+def toggle_knowledge_privacy(
+    id: int,
+    db: Session = Depends(get_db),
+    current_admin: str = Depends(get_current_admin)
+):
+    doc = db.query(KnowledgeDoc).filter(KnowledgeDoc.id == id).first()
+    if not doc:
+        raise HTTPException(status_code=404, detail="Knowledge document not found")
+    doc.is_public = not doc.is_public
+    db.commit()
+    chunks_count = index_document(db, doc)
+    return {"success": True, "is_public": doc.is_public, "chunks_indexed": chunks_count}
+
+@router.delete("/knowledge/{id}")
+def delete_knowledge_document(
+    id: int,
+    db: Session = Depends(get_db),
+    current_admin: str = Depends(get_current_admin)
+):
+    doc = db.query(KnowledgeDoc).filter(KnowledgeDoc.id == id).first()
+    if not doc:
+        raise HTTPException(status_code=404, detail="Knowledge document not found")
+    db.delete(doc)
+    db.commit()
+    return {"success": True, "message": "Document and associated semantic chunks removed"}
+
+@router.post("/knowledge/test-query")
+def test_rag_query(
+    payload: RAGTestQuerySchema,
+    db: Session = Depends(get_db),
+    current_admin: str = Depends(get_current_admin)
+):
+    retrieved = search_public_knowledge(db, payload.query, top_k=payload.top_k)
+    return {
+        "query": payload.query,
+        "results_count": len(retrieved),
+        "retrieved_chunks": retrieved,
+        "grounding_status": "FOUND_GROUNDED_SOURCES" if retrieved else "NO_RELEVANT_CHUNKS"
     }
 
 @router.post("/knowledge/reindex")
@@ -261,3 +367,53 @@ def mark_message_read(
     msg.is_read = True
     db.commit()
     return {"success": True}
+
+# EXPERIENCE & CAREER TIMELINE (STRICTLY FROM LINKEDIN)
+@router.get("/experience", response_model=List[TimelineEventSchema])
+def list_admin_experience(
+    db: Session = Depends(get_db),
+    current_admin: str = Depends(get_current_admin)
+):
+    """Returns experience timeline events strictly verified against Temkin's LinkedIn profile."""
+    return db.query(TimelineEvent).order_by(TimelineEvent.sort_order.asc(), TimelineEvent.id.asc()).all()
+
+@router.post("/experience", response_model=TimelineEventSchema)
+def create_experience_event(
+    payload: TimelineEventCreateSchema,
+    db: Session = Depends(get_db),
+    current_admin: str = Depends(get_current_admin)
+):
+    event = TimelineEvent(**payload.model_dump())
+    db.add(event)
+    db.commit()
+    db.refresh(event)
+    return event
+
+@router.put("/experience/{id}", response_model=TimelineEventSchema)
+def update_experience_event(
+    id: int,
+    payload: TimelineEventCreateSchema,
+    db: Session = Depends(get_db),
+    current_admin: str = Depends(get_current_admin)
+):
+    event = db.query(TimelineEvent).filter(TimelineEvent.id == id).first()
+    if not event:
+        raise HTTPException(status_code=404, detail="Experience event not found")
+    for field, val in payload.model_dump(exclude_unset=True).items():
+        setattr(event, field, val)
+    db.commit()
+    db.refresh(event)
+    return event
+
+@router.delete("/experience/{id}")
+def delete_experience_event(
+    id: int,
+    db: Session = Depends(get_db),
+    current_admin: str = Depends(get_current_admin)
+):
+    event = db.query(TimelineEvent).filter(TimelineEvent.id == id).first()
+    if not event:
+        raise HTTPException(status_code=404, detail="Experience event not found")
+    db.delete(event)
+    db.commit()
+    return {"success": True, "message": "Experience event removed"}

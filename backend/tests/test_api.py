@@ -125,3 +125,81 @@ def test_contact_submission():
     assert data["name"] == "Jane Developer"
     assert data["email"] == "jane@example.com"
 
+def test_admin_knowledge_lifecycle():
+    # Login as admin
+    login_res = client.post("/api/admin/login", json={"username": "admin", "password": "temkin2026"})
+    assert login_res.status_code == 200
+    token = login_res.json()["access_token"]
+    headers = {"Authorization": f"Bearer {token}"}
+
+    # 1. Create a knowledge snippet
+    snippet_payload = {
+        "title": "Meri AI Architecture Notes",
+        "category": "Project Case Study",
+        "content": "Meri AI is an agentic campus automation engine developed by Temkin Abdulmelik and Team Divas that secured 1st Place at the CSEC ASTU Hackathon. It features multi-agent coordination.",
+        "is_public": True
+    }
+    create_res = client.post("/api/admin/knowledge/snippet", json=snippet_payload, headers=headers)
+    assert create_res.status_code == 200
+    doc_id = create_res.json()["doc_id"]
+    assert create_res.json()["chunks_indexed"] >= 1
+
+    # 2. List knowledge documents
+    list_res = client.get("/api/admin/knowledge", headers=headers)
+    assert list_res.status_code == 200
+    docs = list_res.json()
+    assert any(d["id"] == doc_id for d in docs)
+
+    # 3. View document chunks
+    chunks_res = client.get(f"/api/admin/knowledge/{doc_id}/chunks", headers=headers)
+    assert chunks_res.status_code == 200
+    chunks = chunks_res.json()
+    assert len(chunks) >= 1
+    assert "Meri AI" in chunks[0]["content"]
+
+    # 4. Test RAG query test endpoint
+    test_rag = client.post("/api/admin/knowledge/test-query", json={"query": "Meri AI campus", "top_k": 3}, headers=headers)
+    assert test_rag.status_code == 200
+    assert test_rag.json()["results_count"] >= 1
+    assert test_rag.json()["grounding_status"] == "FOUND_GROUNDED_SOURCES"
+
+    # 5. Toggle privacy
+    priv_res = client.put(f"/api/admin/knowledge/{doc_id}/toggle-privacy", headers=headers)
+    assert priv_res.status_code == 200
+    assert priv_res.json()["is_public"] is False
+
+    # 6. Delete document
+    del_res = client.delete(f"/api/admin/knowledge/{doc_id}", headers=headers)
+    assert del_res.status_code == 200
+    assert del_res.json()["success"] is True
+
+def test_admin_experience_endpoints():
+    login_res = client.post("/api/admin/login", json={"username": "admin", "password": "temkin2026"})
+    assert login_res.status_code == 200
+    token = login_res.json()["access_token"]
+    headers = {"Authorization": f"Bearer {token}"}
+
+    # Create new experience event from LinkedIn
+    exp_payload = {
+        "year": "2025 — Present",
+        "title": "AI Project Contributor",
+        "role_or_context": "AfterQuery & Revelo",
+        "description": "Contributed to remote AI evaluation and software engineering projects from verified LinkedIn experience.",
+        "category": "Career",
+        "highlight": True,
+        "sort_order": 1
+    }
+    create_res = client.post("/api/admin/experience", json=exp_payload, headers=headers)
+    assert create_res.status_code == 200
+    exp_id = create_res.json()["id"]
+
+    # List experience events
+    list_res = client.get("/api/admin/experience", headers=headers)
+    assert list_res.status_code == 200
+    items = list_res.json()
+    assert any(item["id"] == exp_id for item in items)
+
+    # Delete experience event
+    del_res = client.delete(f"/api/admin/experience/{exp_id}", headers=headers)
+    assert del_res.status_code == 200
+
